@@ -1,0 +1,26 @@
+{
+ "collection_info": {
+  "namespace": "radware",
+  "name": "radware_modules",
+  "version": "1.0.0",
+  "authors": [],
+  "readme": "README.md",
+  "tags": [],
+  "description": "",
+  "license": [],
+  "license_file": null,
+  "dependencies": {},
+  "repository": "",
+  "documentation": "",
+  "homepage": "",
+  "issues": ""
+ },
+ "file_manifest_file": {
+  "name": "FILES.json",
+  "ftype": "file",
+  "chksum_type": "sha256",
+  "chksum_sha256": "598cf4d3375fbed6300b2dfe6e7cff8427fe12a1edb6cd744e31b59b0e8b1df5",
+  "format": 1
+ },
+ "format": 1
+}
