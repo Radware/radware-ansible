@@ -8,7 +8,7 @@ __metaclass__ = type
 
 from abc import abstractmethod
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.radware.radware_modules.plugins.module_utils.common import BaseAPI, RadwareModuleError, build_specs_from_annotation, \
+from ansible_collections.radware.radware_modules.plugins.module_utilss.common import BaseAPI, RadwareModuleError, build_specs_from_annotation, \
     get_type_hints, get_annotation_class
 try:
     from radware.sdk.exceptions import RadwareError

@@ -175,8 +175,8 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 import traceback
 
-from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
-from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
+from ansible_collections.radware.radware_modules.plugins.module_utilss.common import RadwareModuleError
+from ansible_collections.radware.radware_modules.plugins.module_utilss.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.ha_floating_ip import FloatingIPConfigurator
 
