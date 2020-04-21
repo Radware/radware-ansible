@@ -181,7 +181,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_system_local_user:
+  radware.radware_modules.alteon_config_system_local_user:
     provider: 
       server: 192.168.1.1
       user: admin

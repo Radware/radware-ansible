@@ -135,7 +135,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_system_dns_client:
+  radware.radware_modules.alteon_config_system_dns_client:
     provider: 
       server: 192.168.1.1
       user: admin

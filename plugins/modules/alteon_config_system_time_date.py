@@ -581,7 +581,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_system_time_date:
+  radware.radware_modules.alteon_config_system_time_date:
     provider: 
       server: 192.168.1.1
       user: admin

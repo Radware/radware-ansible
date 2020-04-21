@@ -144,7 +144,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_dns_responders:
+  radware.radware_modules.alteon_config_dns_responders:
     provider: "{{ radware_provider }}"
     state: "{{ state }}"
     parameters:

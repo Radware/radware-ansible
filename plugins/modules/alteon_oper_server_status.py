@@ -89,7 +89,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon set real server operational state
-  alteon_oper_server_status:
+  radware.radware_modules.alteon_oper_server_status:
     provider: 
       server: 192.168.1.1
       user: admin

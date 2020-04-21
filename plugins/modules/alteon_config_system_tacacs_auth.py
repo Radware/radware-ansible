@@ -220,7 +220,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_system_tacacs_auth:
+  radware.radware_modules.alteon_config_system_tacacs_auth:
     provider: 
       server: 192.168.1.1
       user: admin

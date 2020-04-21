@@ -113,7 +113,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon device software
-  alteo_software_image_upload:
+  radware.radware_modules.alteo_software_image_upload:
     provider: 
       server: 192.168.1.1
       user: admin

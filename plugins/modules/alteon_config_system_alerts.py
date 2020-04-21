@@ -216,7 +216,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_system_alerts:
+  radware.radware_modules.alteon_config_system_alerts:
     provider: 
       server: 192.168.1.1
       user: admin

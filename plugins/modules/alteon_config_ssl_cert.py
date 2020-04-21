@@ -143,7 +143,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_ssl_cert:
+  radware.radware_modules.alteon_config_ssl_cert:
     provider: 
       server: 192.168.1.1
       user: admin

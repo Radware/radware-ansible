@@ -116,7 +116,7 @@ requirements:
 
 EXAMPLES = '''
 - name: vdirect_commit
-  vdirect_commit:
+  radware.radware_modules.vdirect_commit:
       vdirect_ip: 10.10.10.10
       vdirect_user: vDirect
       vdirect_password: radware

@@ -371,7 +371,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_ssl_client_auth_policy:
+  radware.radware_modules.alteon_config_ssl_client_auth_policy:
     provider: 
       server: 192.168.1.1
       user: admin

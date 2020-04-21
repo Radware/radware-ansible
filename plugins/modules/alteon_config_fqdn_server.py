@@ -148,7 +148,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_fqdn_server:
+  radware.radware_modules.alteon_config_fqdn_server:
     provider: 
       server: 192.168.1.1
       user: admin

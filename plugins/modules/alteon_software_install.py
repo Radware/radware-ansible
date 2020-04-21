@@ -113,7 +113,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon software installation
-  alteon_software_install:
+  radware.radware_modules.alteon_software_install:
     provider: 
       server: 192.168.1.1
       user: admin

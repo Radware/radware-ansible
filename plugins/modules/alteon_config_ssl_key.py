@@ -126,7 +126,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_ssl_key:
+  radware.radware_modules.alteon_config_ssl_key:
     provider: 
       server: 192.168.1.1
       user: admin

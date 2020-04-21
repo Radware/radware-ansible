@@ -91,7 +91,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon device reboot
-  alteon_mng_device_reboot:
+  radware.radware_modules.alteon_mng_device_reboot:
     provider: 
       server: 192.168.1.1
       user: admin

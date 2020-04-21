@@ -142,7 +142,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_ha_floating_ip:
+  radware.radware_modules.alteon_config_ha_floating_ip:
     provider: 
       server: 192.168.1.1
       user: admin

@@ -104,7 +104,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon device configuration
-  alteon_device_configuration:
+  radware.radware_modules.alteon_device_configuration:
     provider: 
       server: 192.168.1.1
       user: admin

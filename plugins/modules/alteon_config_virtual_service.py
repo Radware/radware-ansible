@@ -487,7 +487,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_virtual_service:
+  radware.radware_modules.alteon_config_virtual_service:
     provider: 
       server: 192.168.1.1
       user: admin

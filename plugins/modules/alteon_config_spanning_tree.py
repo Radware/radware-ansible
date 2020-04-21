@@ -229,7 +229,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_spanning_tree:
+  radware.radware_modules.alteon_config_spanning_tree:
     provider: 
       server: 192.168.1.1
       user: admin

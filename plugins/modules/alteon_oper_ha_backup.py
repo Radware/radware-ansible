@@ -79,7 +79,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon set ha backup
-  alteon_oper_ha_backup:
+  radware.radware_modules.alteon_oper_ha_backup:
     provider: 
       server: 192.168.1.1
       user: admin
