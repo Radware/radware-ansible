@@ -8,7 +8,7 @@ __metaclass__ = type
 
 from abc import abstractmethod
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.radware.common import BaseAPI, RadwareModuleError, radware_server_argument_spec, \
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import BaseAPI, RadwareModuleError, radware_server_argument_spec, \
     build_specs_from_annotation
 try:
     from radware.sdk.api import BaseDeviceConnection

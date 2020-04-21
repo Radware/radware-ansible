@@ -439,8 +439,8 @@ result:
 from ansible.module_utils.basic import AnsibleModule
 import traceback
 from typing import get_type_hints
-from ansible.module_utils.network.radware.common import RadwareModuleError, radware_server_argument_spec
-from ansible.module_utils.network.radware.alteon import AlteonAnsibleModule
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError, radware_server_argument_spec
+from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonAnsibleModule
 from radware.sdk.exceptions import RadwareError
 from radware.alteon.api.mgmt import AlteonManagement
 from radware.alteon.api.config import AlteonConfigurators

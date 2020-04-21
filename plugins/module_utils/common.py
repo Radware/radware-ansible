@@ -4,6 +4,7 @@ __metaclass__ = type
 from ansible.module_utils.basic import env_fallback
 from ansible.module_utils.basic import AnsibleModule
 from abc import ABCMeta, abstractmethod
+
 try:
     from radware.sdk.common import RadwareParametersStruct, RadwareParametersExtension, \
         PasswordArgument, get_annotation_class, is_annotation_type_optional, is_annotation_type_list, \

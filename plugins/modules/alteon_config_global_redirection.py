@@ -351,8 +351,8 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 import traceback
 
-from ansible.module_utils.network.radware.common import RadwareModuleError
-from ansible.module_utils.network.radware.alteon import AlteonConfigurationModule, \
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
+from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.global_traffic_redirection import GlobalRedirectionConfigurator
 

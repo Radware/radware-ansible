@@ -129,8 +129,8 @@ pending:
 from ansible.module_utils.basic import AnsibleModule
 import traceback
 
-from ansible.module_utils.network.radware.common import RadwareModuleError
-from ansible.module_utils.network.radware.alteon import AlteonManagementArgumentSpec, AlteonManagementModule
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
+from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonManagementArgumentSpec, AlteonManagementModule
 from radware.alteon.sdk.alteon_managment import AlteonMngConfig
 
 
