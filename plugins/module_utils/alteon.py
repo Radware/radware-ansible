@@ -7,9 +7,9 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.radware.radware_modules.plugins.module_utilss.configuration import ConfigurationArgumentSpec, ConfigurationModule
-from ansible_collections.radware.radware_modules.plugins.module_utilss.common import RadwareBaseModule, radware_server_argument_spec
-from ansible_collections.radware.radware_modules.plugins.module_utilss.management import ManagementArgumentSpec, ManagementFunctionArgumentSpec, \
+from ansible_collections.radware.radware_modules.plugins.module_utils.configuration import ConfigurationArgumentSpec, ConfigurationModule
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareBaseModule, radware_server_argument_spec
+from ansible_collections.radware.radware_modules.plugins.module_utils.management import ManagementArgumentSpec, ManagementFunctionArgumentSpec, \
     ManagementModule
 try:
     from radware.alteon.api.mgmt import AlteonManagement
