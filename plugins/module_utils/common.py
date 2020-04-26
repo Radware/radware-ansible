@@ -4,7 +4,6 @@ __metaclass__ = type
 from ansible.module_utils.basic import env_fallback
 from ansible.module_utils.basic import AnsibleModule
 from abc import ABCMeta, abstractmethod
-
 try:
     from radware.sdk.common import RadwareParametersStruct, RadwareParametersExtension, \
         PasswordArgument, get_annotation_class, is_annotation_type_optional, is_annotation_type_list, \
@@ -154,6 +153,10 @@ class BaseAPI(object):
 
 
 def build_specs_from_annotation(annotations_src_object):
+    # generate Ansible argument specs dict for input validation
+    # type and other attributed are consumed from Parameter object metadata
+    # the operation is performed recursively
+
     specs = dict()
     annotations = get_type_hints(annotations_src_object)
     for k, v in annotations.items():

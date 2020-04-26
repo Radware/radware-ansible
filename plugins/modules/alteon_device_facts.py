@@ -186,7 +186,9 @@ options:
       - network_class_region
       - (!)network_class_region
       - dns_responders
-      - (!)dns_responders
+      - (!)dns_responders      
+      - slb_pip
+      - (!)slb_pip
 notes:
   - Requires Radware alteon Python SDK.
 requirements:

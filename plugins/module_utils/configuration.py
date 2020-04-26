@@ -84,6 +84,11 @@ class ConfigurationArgumentSpec(object):
 
 
 class ConfigurationModule(BaseAPI):
+    """
+    generate input param object from dict
+    create 'DeviceConfigurationManager' instance
+    execute configurator and return dict result to caller
+    """
     def __init__(self, configurator_class, **kwargs):
         self._configurator = configurator_class(self._device_connection)
         self._config_manager = DeviceConfigurationManager()
