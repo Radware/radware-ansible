@@ -1,4 +1,7 @@
-authors: []
+authors: 
+  - Leon Meguira (@leonmeguira)
+  - Nati Fridman (@natifridman)
+  - Nofar Kovalsky-Livkind (@Nofarliv)
 dependencies: {}
 description: ''
 documentation: ''
@@ -8,6 +11,6 @@ license: []
 name: radware_modules
 namespace: radware
 readme: README.md
-repository: ''
+repository: https://github.com/Radware/radware-ansible
 tags: []
 version: 0.0.1
