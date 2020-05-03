@@ -99,14 +99,15 @@ options:
                     - The IPv4 address of the SLB PIP.
                   required: true
                   default: null
-                    type: str
+                  type: str
             base_type:
                 description:
-                    - The SLB PIP base type
-                    - Can be "port" or "vlan".
+                    - The SLB PIP base type.
                 required: true
                 default: port
-                type: str
+                choices:
+                    - port
+                    - vlan
             ports:
                 description:
                     - Alteon ports for SLB PIP.
@@ -131,7 +132,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.    alteon_config_slb_pip:
+  radware.radware_modules.alteon_config_slb_pip:
         provider: 
             server: 192.168.1.1
             user: admin
