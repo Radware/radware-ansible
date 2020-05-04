@@ -157,7 +157,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.    alteon_config_l2_vlan:
+  radware.radware_modules.alteon_config_l2_vlan:
         provider: 
             server: 192.168.1.1
             user: admin
