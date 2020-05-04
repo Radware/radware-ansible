@@ -13,7 +13,7 @@ The radware-ansible project provides an Ansible collection for managing and auto
 # ansible-galaxy collection install radware.radware_modules
 ```
 
-## Use
+## Example Usage
 Once the collection is installed, you can use it in a playbook by specifying the full namespace path to the module, plugin and/or role.
 
 ```
