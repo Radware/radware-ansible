@@ -3,12 +3,12 @@
 # radware-ansible
 The radware-ansible project provides an Ansible collection for managing and automating your Radware devices. It consists of a set of modules and roles for performing tasks related to Radware devices configuration.
 
-# Requirements
+## Requirements
 - Ansible >= 2.9
 - Python >= 3.6
 - alteon-sdk python package
 
-# Installing the Build
+## Installing the Build
 ```
 # ansible-galaxy collection install radware.radware_modules
 ```
@@ -40,3 +40,12 @@ Once the collection is installed, you can use it in a playbook by specifying the
           - 1
           - 2
 ```
+
+## Copyright
+
+Copyright 2020 Radware LTD
+
+## License
+GNU General Public License v3.0
+
+See [COPYING](COPYING) to see the full text.
