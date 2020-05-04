@@ -3,14 +3,20 @@ authors:
   - Nati Fridman (@natifridman)
   - Nofar Kovalsky-Livkind (@Nofarliv)
 dependencies: {}
-description: ''
+description: A collection of Ansible Modules for Radware devices
 documentation: ''
-homepage: ''
-issues: ''
-license: []
+homepage: https://www.radware.com
+issues: https://github.com/Radware/radware-ansible/issues
+license_file: 'COPYING'
 name: radware_modules
 namespace: radware
 readme: README.md
 repository: https://github.com/Radware/radware-ansible
-tags: []
+tags: 
+- radware
+- alteon
+- cloud
+- collection
+- networking
+- sdn
 version: 0.0.1
