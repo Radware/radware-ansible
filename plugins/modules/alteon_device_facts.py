@@ -190,9 +190,10 @@ options:
       - slb_pip
       - (!)slb_pip
 notes:
-  - Requires Radware alteon Python SDK.
+  - Requires the Radware alteon-sdk Python package on the host. This is as easy as
+      C(pip3 install alteon-sdk)
 requirements:
-  - Radware alteon Python SDK.
+  - alteon-sdk
 '''
 
 EXAMPLES = r'''

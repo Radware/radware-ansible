@@ -150,31 +150,32 @@ options:
                 type: list
                 elements: int
 notes:
-    - Requires Radware alteon Python SDK.
+  - Requires the Radware alteon-sdk Python package on the host. This is as easy as
+      C(pip3 install alteon-sdk)
 requirements:
-    - Radware alteon Python SDK.
+  - alteon-sdk
 '''
 
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_l2_vlan:
-        provider: 
-            server: 192.168.1.1
-            user: admin
-            password: admin
-            validate_certs: no
-            https_port: 443
-            ssh_port: 22
-            timeout: 5
-        state: present
-        parameters:
-          index: 45
-          state: enabled
-          name: test_vlan
-          source_mac_learning: enabled
-          ports:
-            - 1
-            - 2
+    provider: 
+      server: 192.168.1.1
+      user: admin
+      password: admin
+      validate_certs: no
+      https_port: 443
+      ssh_port: 22
+      timeout: 5
+    state: present
+    parameters:
+      index: 45
+      state: enabled
+      name: test_vlan
+      source_mac_learning: enabled
+      ports:
+      - 1
+      - 2
 '''
 
 RETURN = r'''
