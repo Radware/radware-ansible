@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -17,7 +17,7 @@ short_description: Upload Alteon Image
 description:
   - Upload Alteon Software Image on device
   - the command expect src/dst file path
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
 options:
@@ -28,7 +28,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

@@ -9,7 +9,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -18,7 +18,7 @@ short_description: Set Alteon Real Server operational status
 description:
   - Set real server operational status
   - the module set 'changed' flag if server state has changed
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
 options:
@@ -29,7 +29,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

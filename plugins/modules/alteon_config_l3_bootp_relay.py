@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -17,7 +17,7 @@ short_description: Manage BOOTP Relay in Radware Alteon
 description:
   - In the DHCP environment, Alteon acts as a relay agent. 
   - This BOOTP relay feature enables Alteon to forward a client request for an IP address to two BOOTP servers with configured IP addresses. 
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
@@ -29,7 +29,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

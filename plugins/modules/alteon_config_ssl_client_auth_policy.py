@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -17,7 +17,7 @@ short_description: Manage SSL Authentication Policy in Radware Alteon
 description:
   - SSL client authentication enables a server to confirm a client's identity as part of the SSL handshake process. Similarly, SSL server authentication enables a client to confirm the identity of the server. Authentication of a client or server requires checking their certificate validity. If the certificate is valid, the handshake process is completed, otherwise the session is terminated.
   - The same Authentication Policy can be associated with multiple SSL Policies.
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
@@ -29,7 +29,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

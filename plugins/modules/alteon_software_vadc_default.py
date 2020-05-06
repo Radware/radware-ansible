@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -18,7 +18,7 @@ description:
   - Set default version for vadcs
   - Each created vadc will boot with default version
   - Applicable on VX
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
 options:
@@ -29,7 +29,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

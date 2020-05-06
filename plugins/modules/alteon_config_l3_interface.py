@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -17,7 +17,7 @@ short_description: Manage l3 interface in Radware Alteon
 description:
   - Alteon needs an IP interface for each subnet to which it is connected so it can communicate with the real servers and other devices attached to it that receive switching services. 
   - Alteon can be configured with up to 256 IP interfaces. Each IP interface represents Alteon on an IP subnet on your network.
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
@@ -29,7 +29,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:

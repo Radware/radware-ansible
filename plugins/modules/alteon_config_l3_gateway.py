@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['stableinterface'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -18,7 +18,7 @@ description:
   - Manage l3 gateway in Radware Alteon. 
   - Alteon can be configured with up to 255 gateways.
   - Gateways 1 to 4 are reserved for default gateway load balancing. Gateways 5 to 259 are used for load-balancing of VLAN-based gateways.
-version_added: null
+version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
@@ -30,7 +30,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP.
+          - Radware Alteon IP address.
         required: true
         default: null
       user:
