@@ -1,0 +1,6 @@
+# Ref: https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser
+blank_issues_enabled: false
+contact_links:
+- name: 💬 Talks to the community
+  url: https://support.radware.com/app/categories/detail/c/581/session/L3RpbWUvMTU4OTExNTE4OC9nZW4vMTU4OTExNTE4OC9zaWQvZlVuUTRsaThwQWp5dE5ySFVSREFuQ2ZjUGdLajZvQWVxZGZtS2x0TW90cXlqdWdOTk9xMEJOTlRQMDlCVW5ycHhVUkdIS1B4N28wOWdCeXA3TVlldlE4WUQzUTVHRWgydVh4QWx3Y29GbjJoTWJ5Mmp3ayU3RVdLa0ElMjElMjE%3D
+  about: Please ask and answer usage questions here
