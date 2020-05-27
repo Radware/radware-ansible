@@ -1,0 +1,87 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params.yml
+  tasks:
+    - name: interface 1 config
+      radware.radware_modules.alteon_config_l3_interface:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: 1
+          state: enabled
+          ip4_address: 192.168.3.2
+          ip4_subnet: 255.255.255.0
+          ip_ver: ipv4
+          vlan: 1
+          
+    - name: interface 2 config
+      radware.radware_modules.alteon_config_l3_interface:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: 2
+          state: enabled
+          ip4_address: 192.168.2.2
+          ip4_subnet: 255.255.255.0
+          ip_ver: ipv4
+          vlan: 2
+
+    - name: gateway config
+      radware.radware_modules.alteon_config_l3_gateway:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: 1
+          state: enabled
+          ip4_address: 192.168.2.254
+          ip_ver: ipv4
+          health_check_type: icmp
+
+    - name: real config
+      radware.radware_modules.alteon_config_server:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: real1
+          state: enabled
+          ip_address: 192.168.3.1
+
+    - name: group config
+      radware.radware_modules.alteon_config_server_group:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        revert_on_error: true
+        parameters:
+          index: group_test
+          slb_metric: roundRobin
+          health_check_id: tcp
+          server_names:
+            - real1
+
+    - name: virt config
+      radware.radware_modules.alteon_config_virtual_server:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: virt_test
+          state: enabled
+          ip_address: 192.168.2.100
+
+    - name: service config
+      radware.radware_modules.alteon_config_virtual_service:
+        provider: "{{ radware_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: virt_test
+          service_index: 1
+          service_port: 80
+          server_group_name: group_test
+          application_type: http
+          nat_mode: address
+          nat_address: 192.168.3.100
+
+    - name: apply configuration
+      radware.radware_modules.alteon_mng_config:
+        provider: "{{ radware_provider }}"
+        command: apply
+

@@ -1,0 +1,10 @@
+
+radware_vx_provider:
+  server: 10.210.67.64
+  user: admin
+  password: radware
+  validate_certs: no
+  https_port: 443
+  ssh_port: 22
+  timeout: 10
+

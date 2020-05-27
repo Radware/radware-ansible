@@ -1,0 +1,32 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params_vx.yml
+  tasks:
+    - name: config vadc
+      alteon_config_vadc_instance:
+        provider: "{{ radware_vx_provider }}"
+        state: "{{ state }}"
+        parameters:
+          index: 3
+          state: enabled
+          capacity_units: 4
+          throughput_limit_mbps: 200
+          feature_global: enabled
+          management_ip4_address: 10.210.58.103
+          management_ip4_mask: 255.255.0.0
+          management_ip4_gateway: 10.210.1.1
+          vadc_https_access: enabled
+          vadc_ssh_access: enabled
+          lock_vadc_management: enabled
+          delegation_vx_management: enabled
+          delegation_vx_syslog: enabled
+          vx_admin_password: radware
+          vadc_admin_password: radware
+          vadc_system_name: vADC-3
+          vlans:
+            - 210
+ 
+    - name: alteon configuration command
+      alteon_mng_config:
+        provider: "{{ radware_vx_provider }}"
+        command: apply
