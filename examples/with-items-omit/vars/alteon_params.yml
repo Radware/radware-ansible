@@ -1,0 +1,12 @@
+
+radware_provider:
+  server: 10.210.71.91
+  user: admin
+  password: admin
+  #user: test
+  #password: radware
+  validate_certs: no
+  https_port: 443
+  ssh_port: 22
+  timeout: 5
+ 

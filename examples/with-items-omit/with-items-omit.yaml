@@ -1,0 +1,32 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params.yml
+
+  vars:
+    alteonvlan:
+      - vlan_index: 1
+        vlan_name: "Default VLAN"
+        vlan_source_mac_learning: enabled
+        vlan_state: disabled
+      
+      - vlan_index: 2
+        vlan_name: "Default VLAN 2"
+        vlan_source_mac_learning: enabled
+        vlan_state: enabled
+        vlan_ports: 
+          - 2
+
+  tasks:
+    - name: vlan config
+      radware.radware_modules.alteon_config_l2_vlan:
+        state: present
+        parameters:
+          index: "{{ item.vlan_index}}"
+          name: "{{ item.vlan_name }}"
+          source_mac_learning: "{{ item.vlan_source_mac_learning }}"
+          ports: "{{ item.vlan_ports | default(omit) }}"
+          state: "{{ item.vlan_state }}"
+        provider: "{{ radware_provider }}"
+      delegate_to: localhost
+      with_items: "{{ alteonvlan }}"
+
