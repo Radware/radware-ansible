@@ -94,47 +94,46 @@ options:
       - Parameters for SSL certificate configuration.
     suboptions:
       index:
-      description:
-        - Certificate group ID.
-      required: true
-      default: null
-      type: str
+        description:
+          - Certificate group ID.
+        required: true
+        default: null
+        type: str
       certificate_type:
-      description:
-        - Certificate type.
-      required: false
-      default: null
-      choices:
-      - serverCertificate
-      - trustedCertificate
-      - intermediateCertificate
-      description:
-      description:
-        -  Certificate group description.
-      required: false
-      default: null
-      type: str
+        description:
+          - Certificate type.
+        required: false
+        default: null
+        choices:
+        - serverCertificate
+        - trustedCertificate
+        - intermediateCertificate
+        description:
+          -  Certificate group description.
+        required: false
+        default: null
+        type: str
       default_server_certificate:
-      description:
-        - Default server certificate, applicable to certificate_type=serverCertificate.
-      required: false
-      default: null
-      type: str
+        description:
+          - Default server certificate, applicable to certificate_type=serverCertificate.
+        required: false
+        default: null
+        type: str
       certificate_chaining_mode:
-      description:
-        - Certificate chaining mode.
-      required: false
-      default: null
-      choices:
-      - bySubjectIssuer
-      - bySkidAkid
-      certificate_names:
-      description:
-        - Certificate names belong to group.
-      required: false
-      default: null
-      type: list
-      elements: str
+        description:
+          - Certificate chaining mode.
+        required: false
+        default: null
+        choices:
+        - bySubjectIssuer
+        - bySkidAkid
+        certificate_names:
+        description:
+          - Certificate names belong to group.
+        required: false
+        default: null
+        type: list
+        elements: str
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)

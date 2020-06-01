@@ -179,7 +179,7 @@ options:
       connection_termination:
         description:
           - Set connection termination.
-          - Value for the tcphalfopen out-of-the-box health check: RST.
+          - "Value for the tcphalfopen out-of-the-box health check: RST."
         required: false
         default: fin
         choices:

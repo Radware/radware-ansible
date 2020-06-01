@@ -73,7 +73,7 @@ options:
     required: true
     default: null
     choices:
-   - present
+    - present
     - absent
     - read
     - overwrite

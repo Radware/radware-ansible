@@ -121,7 +121,7 @@ options:
       session_log_state:
         description:
           - Enables or disables session log.
-          - Caution: Turning on the session log may impair Alteon traffic-processing performance.
+          - "Caution: Turning on the session log may impair Alteon traffic-processing performance."
         required: false
         default: disabled
         choices:

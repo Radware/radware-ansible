@@ -282,7 +282,7 @@ options:
         description:
           - Specifies whether to enable or disable session logging.
           - Session logs are sent to the syslog servers via the data port when the sessions are deleted or aged out. The Alteon switch processor sends the buffered session logging data to the syslog server at regular intervals (every 30 seconds) if the buffer is not completely filled. There will be no session syslog if no sessions have aged out during this duration of 30 seconds.
-          - Note: Syslog servers configured on Alteon must be accessible via the data ports.
+          - "Note: Syslog servers configured on Alteon must be accessible via the data ports."
         required: false
         default: disabled
         choices:

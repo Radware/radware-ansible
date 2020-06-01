@@ -133,10 +133,10 @@ options:
         - disabled
       domain_name:
         description:
-          - Specifies the domain name for this virtual server. When configured the domain name is used for:
+          - "Specifies the domain name for this virtual server. When configured the domain name is used for:"
           - DNS resolution for global load balancing. Additional domains can be defined on the same virtual server by attaching multiple DNS (GSLB) rules, each with a different domain.
           - HTTP/S health check, if the health check Host parameter is set to Inherit.
-          -
+          - ""
           - The domain name typically includes the name of the company or organization, and the Internet group code (.com, .edu, .gov, .org, and so on). For example, 'foocorp.com'.
           - It does not include the hostname portion (www, www2, ftp, and so on).
         required: false

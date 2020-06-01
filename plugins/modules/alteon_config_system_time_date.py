@@ -97,14 +97,14 @@ options:
       date_mm_dd_yyyy:
         description:
           - The date on the real-time clock, in M/D/YYYY format.
-          - Note: A zero-length string is displayed if the date is not available.
+          - "Note: A zero-length string is displayed if the date is not available."
         required: false
         default: null
         type: str
       time_hh_mm_ss:
         description:
           - The time on the real-time clock, in hh:mm:SS format.
-          - Note: A zero-length string is displayed if the time is not available.
+          - "Note: A zero-length string is displayed if the time is not available."
         required: false
         default: null
         type: str
