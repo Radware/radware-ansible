@@ -103,7 +103,7 @@ options:
       service_index:
         description:
           - The Virtual Service Index.
-        required: false
+        required: true
         default: ipv4
         type: int
       description:
