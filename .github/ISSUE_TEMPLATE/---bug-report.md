@@ -9,6 +9,12 @@ assignees: LeoBrider, natifridman, Nofarliv
 
 ## Bug Report 
 
+##### CUSTOMER
+<!--- The customer account name -->
+
+##### SEVERITY
+<!--- Low/High/Critical -->
+
 ##### SUMMARY
 <!--- Explain the problem briefly -->
 
