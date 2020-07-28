@@ -127,7 +127,7 @@ options:
         choices:
         - bySubjectIssuer
         - bySkidAkid
-        certificate_names:
+      certificate_names:
         description:
           - Certificate names belong to group.
         required: false

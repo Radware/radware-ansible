@@ -216,7 +216,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           state:
             description:
               - Sync peer state.
@@ -238,7 +239,7 @@ options:
               - IP version.
             required: false
             default: null
-            typr: str
+            type: str
           ip6_address:
             description:
               - IP version.

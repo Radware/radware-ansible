@@ -445,7 +445,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           vlan:
             description:
               - The VLAN ID of the allowed network.

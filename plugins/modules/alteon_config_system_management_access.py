@@ -452,7 +452,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           ip_address:
             description:
               - The IPv4 management network address.
@@ -541,7 +542,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           ip_address:
             description:
               - The IPv6 management network address.

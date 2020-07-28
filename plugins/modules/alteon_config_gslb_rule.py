@@ -178,7 +178,8 @@ options:
           - Rule metrics.
         required: false
         default: null
-        elements:
+        elements: dict
+        suboptions:
           priority:
             description:
               - Rule metric priority.

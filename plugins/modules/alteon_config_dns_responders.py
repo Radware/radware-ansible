@@ -100,7 +100,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           name:
             description:
               - The DNS Responder name.

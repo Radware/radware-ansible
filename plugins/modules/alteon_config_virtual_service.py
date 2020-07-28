@@ -468,7 +468,8 @@ options:
           - Appshape scripts.
         required: false
         default: null
-        elements:
+        elements: dict
+        suboptions:
           priority:
             description:
               - Appshape script priority.

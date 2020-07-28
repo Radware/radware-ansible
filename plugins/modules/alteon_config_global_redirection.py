@@ -219,7 +219,8 @@ options:
           - Remote site configuration.
         required: false
         default: null
-        elements:
+        elements: dict
+        suboptions:
           state:
             description:
               - Enable/disable remote site state.

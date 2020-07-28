@@ -100,7 +100,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           network:
             description:
               - The destination IP address of this route.
@@ -131,7 +132,8 @@ options:
         required: false
         default: null
         type: list
-        elements:
+        elements: dict
+        suboptions:
           network:
             description:
               - The destination IP address of this route.
