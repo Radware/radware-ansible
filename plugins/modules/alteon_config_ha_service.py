@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2020, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -12,14 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
-module: alteon_config_server
-short_description: Manage real server in Radware Alteon
+module: alteon_config_ha_service
+short_description: Manage HA services in Radware Alteon
 description:
-  - Manage real server in Radware Alteon
+  - Manage HA services in Radware Alteon 
 version_added: null
 author: 
-  - Leon Meguira (@leonmeguira)
-  - Nati Fridman (@natifridman)
+  - Nofar Livkind
 options:
   provider:
     description:
@@ -92,160 +91,102 @@ options:
     type: bool
   parameters:
     description:
-      - Parameters for real server configuration.
+      - Parameters for Altoen HA services configuration.
     suboptions:
       index:
         description:
-          - Real server ID.
+          - The service ID number in alphanumeric.
         required: true
         default: null
         type: str
       state:
         description:
-          - Real server state.
+          - The state of the HA group.
         required: false
-        default: null
+        default: disabled
         choices:
         - enabled
-        - disabled
-        - disabled_with_fastage
-        - shutdown_connection
-        - shutdown_persistent_sessions
-      ip_ver:
+        - disabled        
+      pref:
         description:
-          - Specifies the type of IP address.
+          - The preferred initial state.
         required: false
-        default: ipv4
+        default: standby
         choices:
-        - ipv4
-        - ipv6
-      ip_address:
+        - active
+        - standby
+      failBackMode:
         description:
-          - The IPv4 address of the real server.
+          - The fail back mode.
         required: false
-        default: null
-        type: str
-      ip6_address:
+        default: onfailure
+        choices:
+        - onfailure
+        - always
+      advertise_Interval:
         description:
-          - The IPv6 address of the real server.
-        required: false
-        default: null
-        type: str
-      weight:
-        description:
-          - The server weight.
+          - The advertisement interval.
         required: false
         default: 1
-        type: int
-      max_connections:
+        type: int   
+      interfaces:
         description:
-          - Specifies the maximum number of simultaneous connections that this real server can support.
-          - No new connections are issued to this server if this limit is reached. New connections are issued again to this server once the number of current connections has decreased below the limit.
-          - 0 means no connection limit
-        required: false
-        default: 0
-        type: int
-      connection_mode:
-        description:
-          - Specifies the maximum connections mode.
-          - Real servers with the same IP address must be configured with the same maximum connections mode.
-          - In C(physical), real servers with the same IP address configured with the physical maximum connections mode must all have the same Maximum Connections value.
-          - In C(logical), real servers with the same IP address configured with the logical maximum connections mode can each have a different Maximum Connections value.
-        required: false
-        default: physical
-        choices:
-        - physical
-        - logical
-      availability:
-        description:
-          - The weight of the server when performing the Global Server Load Balancing (GSLB) decision using the availability metric.
-        required: false
-        default: null
-        type: int
-      server_type:
-        description:
-          - The server type. It participates in global Server Load Balancing when it is configured as remote-server.
-        required: false
-        default: local_server
-        choices:
-        - local_server
-        - remote_server
-      nat_mode:
-        description:
-          - Specifies Client NAT configuration source.
-        required: false
-        default: enable
-        choices:
-        - enable
-        - address
-        - nwclss
-        - disable
-      nat_address:
-        description:
-          - The Client NAT address for the real server.
-        required: false
-        default: null
-        type: str
-      nat_subnet:
-        description:
-          - The subnet mask for the Client NAT address for the real server.
-        required: false
-        default: null
-        type: str
-      nat6_address:
-        description:
-          - The Client NAT IPv6 address for the real server.
-        required: false
-        default: null
-        type: str
-      nat6_prefix:
-        description:
-          - The prefix for the Client NAT address for the real server.
-        required: false
-        default: null
-        type: int
-      nat_ip_persistency:
-        description:
-          - Client NAT Persistency when persistency mode is address or subnet.
-        required: false
-        default: disable
-        choices:
-        - disable
-        - client
-        - host
-      nat_network_class_name:
-        description:
-          - NAT network class name.
-        required: false
-        default: null
-        type: str
-      nat_net_class_ip_persistency:
-        description:
-          - Client NAT Persistency when persistency mode is network class.
-        required: false
-        default: disable
-        choices:
-        - disable
-        - client
-      health_check_id:
-        description:
-          - Health check ID.
-        required: false
-        default: null
-        type: str
-      server_ports:
-        description:
-          - The Layer 4 real-service port number.
+          - List of IP interfaces for HA communication between the devices.
         required: false
         default: null
         type: list
-        elements: int
-      name:
+        elements: int  
+      floating_IPs:
         description:
-          - The name of the real server.
+          - Floating IP index to add to the HA group.
         required: false
         default: null
-        type: str        
+        type: list
+        elements: str  
+      vips:
+        description:
+          - VIP index to add to the HA group.
+        required: false
+        default: null
+        type: list
+        elements: str  
+      trig_gwtrck_state:  
+        description:
+          - The Gateway tracking state.
+        required: false
+        default: disabled
+        choices:
+        - enabled
+        - disabled
+      trig_gwtrck_list:  
+        description:
+          - The list of tracking interface.
+        required: false
+        default: null
+        type: list
+        elements: int      
+      trig_ifs_list:
+        description:
+          - The Gateway tracking list.
+        required: false
+        default: null
+        type: list
+        elements: int      
+      trig_reals_state:
+        description:
+          - Enable or disable real tracking.
+        required: false
+        default: disabled
+        choices:
+        - enabled
+        - disabled      
+      trig_reals_list:
+        description:
+          - The list of real to HA group.
+        required: false
+        default: null
+        type: list
+        elements: str                   
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
@@ -254,7 +195,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  alteon_config_server:
+  alteon_config_ha_service:
     provider: 
       server: 192.168.1.1
       user: admin
@@ -265,16 +206,11 @@ EXAMPLES = r'''
       timeout: 5
     state: present
     parameters:
-      index: real1
-      state: disabled_with_fastage
-      ip_address: 80.80.80.80
-      weight: 7
-      availability: 5
-      health_check_id: hc_test
-      server_ports:
-        - 80
-        - 8080
-        - 8081
+      index: 1
+      state: enabled
+      pref: active
+      failBackMode: always
+      interfaces: 1 2
 '''
 
 RETURN = r'''
@@ -295,18 +231,18 @@ import traceback
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
-from radware.alteon.sdk.configurators.server import ServerConfigurator
+from radware.alteon.sdk.configurators.ha_service import HaServiceConfigurator
 
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
-        super(ModuleManager, self).__init__(ServerConfigurator, **kwargs)
+        super(ModuleManager, self).__init__(HaServiceConfigurator,  **kwargs)
 
 
 def main():
-
-    spec = ArgumentSpec(ServerConfigurator)
+    spec = ArgumentSpec(HaServiceConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
+
     try:
         mm = ModuleManager(module=module)
         result = mm.exec_module()

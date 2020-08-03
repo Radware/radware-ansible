@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['stableinterface'],
+                    'status': ['preview'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -16,7 +16,7 @@ module: alteon_device_facts
 short_description: Collect facts from Alteon device
 description:
   - Collect facts from Alteon device
-version_added: '2.9'
+version_added: null
 author: 
   - Leon Meguira (@leonmeguira)
 options:
@@ -27,7 +27,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP address.
+          - Radware Alteon IP.
         required: true
         default: null
       user:
@@ -189,16 +189,19 @@ options:
       - (!)dns_responders      
       - slb_pip
       - (!)slb_pip
+      - slb_pip6
+      - (!)slb_pip6
+      - ha_service
+      - (!)ha_service               
 notes:
-  - Requires the Radware alteon-sdk Python package on the host. This is as easy as
-      C(pip3 install alteon-sdk)
+  - Requires Radware alteon Python SDK.
 requirements:
-  - alteon-sdk
+  - Radware alteon Python SDK.
 '''
 
 EXAMPLES = r'''
 - name: alteon device configuration
-  radware.radware_modules.alteon_device_facts:
+  alteon_mng_device_configuration:
     provider: 
       server: 192.168.1.1
       user: admin
@@ -443,7 +446,7 @@ from ansible.module_utils.basic import AnsibleModule
 import traceback
 from typing import get_type_hints
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError, radware_server_argument_spec
-from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonAnsibleModule
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import AlteonAnsibleModule
 from radware.sdk.exceptions import RadwareError
 from radware.alteon.api.mgmt import AlteonManagement
 from radware.alteon.api.config import AlteonConfigurators
