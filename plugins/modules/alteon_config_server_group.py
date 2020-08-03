@@ -8,7 +8,7 @@ from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['stableinterface'],
+                    'status': ['preview'],
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
@@ -16,7 +16,7 @@ module: alteon_config_server_group
 short_description: Manage server group in Radware Alteon
 description:
   - Manage server group in Radware Alteon
-version_added: '2.9'
+version_added: null
 author: 
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
@@ -28,7 +28,7 @@ options:
     suboptions:
       server:
         description:
-          - Radware Alteon IP address.
+          - Radware Alteon IP.
         required: true
         default: null
       user:
@@ -227,16 +227,21 @@ options:
         default: null
         type: list
         elements: str
+      name:
+        description:
+          - The name of the real server group.
+        required: false
+        default: null
+        type: str
 notes:
-  - Requires the Radware alteon-sdk Python package on the host. This is as easy as
-      C(pip3 install alteon-sdk)
+  - Requires Radware alteon Python SDK.
 requirements:
-  - alteon-sdk
+  - Radware alteon Python SDK.
 '''
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_server_group:
+  alteon_config_server_group:
     provider: 
       server: 192.168.1.1
       user: admin
@@ -273,7 +278,7 @@ from ansible.module_utils.basic import AnsibleModule
 import traceback
 
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
-from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
+from ansible_collections.radware.radware_modules.plugins.module_utils.common import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.server_group import ServerGroupConfigurator
 
