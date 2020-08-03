@@ -134,34 +134,22 @@ options:
           - List of IP interfaces for HA communication between the devices.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: int  
-=======
-        type: int
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
       floating_IPs:
         description:
           - Floating IP index to add to the HA group.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: str  
-=======
-        type: str
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
       vips:
         description:
           - VIP index to add to the HA group.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: str  
-=======
-        type: str
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
       trig_gwtrck_state:  
         description:
           - The Gateway tracking state.
@@ -175,23 +163,15 @@ options:
           - The list of tracking interface.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: int      
-=======
-        type: int    
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
       trig_ifs_list:
         description:
           - The Gateway tracking list.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: int      
-=======
-        type: int       
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
       trig_reals_state:
         description:
           - Enable or disable real tracking.
@@ -205,12 +185,8 @@ options:
           - The list of real to HA group.
         required: false
         default: null
-<<<<<<< HEAD
         type: list
         elements: str                   
-=======
-        type: str                   
->>>>>>> ed2d7fedc8f495d11b5ec6e1791d73ac033ed0ed
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
