@@ -1,0 +1,35 @@
+- hosts: localhost 
+  
+  tasks:
+  - name: alteon configuration command
+    radware.radware_modules.alteon_config_ssl_cert:
+      provider:
+        server: 192.168.1.1
+        user: admin
+        password: admin
+        validate_certs: no
+        https_port: 443
+        ssh_port: 22
+        timeout: 5
+      state: present
+      parameters:
+        index: demo_cert
+        certificate_type: serverCertificate
+        description: my_cert
+        content: |
+          -----BEGIN CERTIFICATE-----
+          MIICJjCCAY+gAwIBAgIQIo7V/EZ5opdPxlB692ow+TANBgkqhkiG9w0BAQQFADAd
+          MRswGQYDVQQDExJ3d3cuaGFja21lYmFuay5jb20wHhcNOTkxMjMxMjEwMDAwWhcN
+          MzUxMjMxMjEwMDAwWjAdMRswGQYDVQQDExJ3d3cuaGFja21lYmFuay5jb20wgZ8w
+          DQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBALkZQmqMFCncvBh6lpZABpUV7kGC4WJU
+          Gw9BW8qZEpVknvogN8FNN3xv77zea+q9f7G7mbmOyb3qjGYulxsdVEX3LBQl1ktf
+          aYLy0GxO5VrAAhitTrjC7uQDfZrgtnIvjLl3nmw38UKxhZU6cc5lGG7zvBTdcewq
+          x/10hVeGbCoFAgMBAAGjZzBlMBMGA1UdJQQMMAoGCCsGAQUFBwMBME4GA1UdAQRH
+          MEWAEGp3oyg7DUb1IMX4mAJrxL2hHzAdMRswGQYDVQQDExJ3d3cuaGFja21lYmFu
+          ay5jb22CECKO1fxGeaKXT8ZQevdqMPkwDQYJKoZIhvcNAQEEBQADgYEAZuykQk3m
+          XqDMMr10MOuihBEBx62WgsoQuWtO6v+E7i+KriTmTN0FgQI2JNXOnQJRA/vcHebY
+          0lp7OyQKsL/tOgNSnU/bzkEhuFLj9KSQtRxpfZf8X+jjtoObB6aRk+M/fNd/bm2s
+          SOpp+bm13htPmhgvI+CIND63rORp3oIQz0s=
+          -----END CERTIFICATE-----
+
+
