@@ -1,0 +1,67 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params.yml
+  tasks:
+    - name: interface config
+      radware.radware_modules.alteon_config_l3_interface:
+        provider:
+          server: "{{ item.address }}"
+          user: "{{ item.username }}"
+          password: "{{ item.password }}"
+          validate_certs: no
+        state: "{{ state }}"
+        parameters:
+          index: 1
+          state: enabled
+          ip4_address: "{{ item.interface }}"
+          ip4_subnet: 255.255.255.0
+          ip_ver: ipv4
+          peer_ip: "{{ item.peer }}"
+          vlan: 1
+      loop: "{{ alteons }}"
+        
+    - name: configure active ha
+      radware.radware_modules.alteon_config_high_availability:
+        provider:
+          server: "{{ alteons[0].address }}"
+          user: "{{ alteons[0].username }}"
+          password: "{{ alteons[0].password }}"
+          validate_certs: no
+        state: "{{ state }}"
+        parameters:
+          mode: switch
+          fail_back_mode: always
+          preferred_state: active
+          advertising_interfaces:
+          - 1
+          tracked_interfaces:
+          - 1
+
+          
+    - name: configure standby ha
+      radware.radware_modules.alteon_config_high_availability:
+        provider:
+          server: "{{ alteons[1].address }}"
+          user: "{{ alteons[1].username }}"
+          password: "{{ alteons[1].password }}"
+          validate_certs: no
+        state: "{{ state }}"
+        parameters:
+          mode: switch
+          fail_back_mode: always
+          preferred_state: standby
+          advertising_interfaces:
+          - 1
+          tracked_interfaces:
+          - 1
+
+    - name: apply configuration
+      radware.radware_modules.alteon_mng_config:
+        provider:
+          server: "{{ item.address }}"
+          user: "{{ item.username }}"
+          password: "{{ item.password }}"
+          validate_certs: no
+        command: apply
+      loop: "{{ alteons }}"
+

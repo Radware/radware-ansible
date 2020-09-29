@@ -1,0 +1,14 @@
+
+alteons:
+  - name: Alteon-Ansible-1
+    username: admin
+    password: radware2
+    address: 10.210.71.5
+    interface: 192.168.66.1
+    peer: 192.168.66.2
+  - name: Alteon-Ansible-2
+    username: admin
+    password: radware2
+    address: 10.210.71.6
+    interface: 192.168.66.2
+    peer: 192.168.66.1

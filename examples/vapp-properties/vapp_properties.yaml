@@ -1,0 +1,34 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params.yml
+  tasks:    
+    - name: Clone Alteon VA
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: no
+        datacenter: Main
+        esxi_hostname: "10.210.154.10"
+        name: '{{ item.name }}'
+        template: AlteonOS-32.6.2.0_rls_311
+        folder: /Nati/
+        vapp_properties:
+        - id: guestinfo.user-data
+          value: "{{ item.user_data | to_json }}"
+      loop: "{{ alteons }}"
+      delegate_to: localhost
+      
+    - name: Power on Alteons
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: no
+        datacenter: Main
+        esxi_hostname: "10.210.154.10"
+        state: poweredon
+        name: '{{ item.name }}'
+        folder: /Nati/
+      loop: "{{ alteons }}"
+      delegate_to: localhost

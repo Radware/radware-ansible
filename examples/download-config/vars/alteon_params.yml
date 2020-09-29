@@ -1,0 +1,10 @@
+
+radware_provider:
+  server: 192.168.1.1
+  user: admin
+  password: admin
+  validate_certs: no
+  https_port: 443
+  ssh_port: 22
+  timeout: 10
+ 

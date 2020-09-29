@@ -1,0 +1,12 @@
+
+vcenter_hostname: 192.168.1.1
+vcenter_username: "administrator@vsphere.local"
+vcenter_password: "radware"
+
+alteons:
+  - name: Alteon-Ansible-1
+    user_data: {"MgmtConfig":{"MgmtIP":"10.210.71.5","MgmtMask":"255.255.0.0","MgmtGW":"10.210.1.1","DHCP":"false"},"UserCredentials":{"name":"admin","password":"radware2","cos":"admin"},"vaResources":{"ADCCPU":"2","ADCRAM":"4","ADCHDD":"9","TD":"0","AWCPU":"0"}}
+  - name: Alteon-Ansible-2
+    user_data: {"MgmtConfig":{"MgmtIP":"10.210.71.6","MgmtMask":"255.255.0.0","MgmtGW":"10.210.1.1","DHCP":"false"},"UserCredentials":{"name":"admin","password":"radware2","cos":"admin"},"vaResources":{"ADCCPU":"2","ADCRAM":"4","ADCHDD":"9","TD":"0","AWCPU":"0"}}
+
+ 

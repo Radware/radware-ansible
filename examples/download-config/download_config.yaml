@@ -1,0 +1,14 @@
+- hosts: localhost 
+  vars_files:
+    - vars/alteon_params.yml
+    
+  tasks:  
+  - name: alteon device configuration
+    radware.radware_modules.alteon_device_configuration:
+      provider: "{{ radware_provider }}"
+      command: config_download
+      passphrase: radware
+      include_keys: true
+      file_path: /tmp/alteon-config
+
+

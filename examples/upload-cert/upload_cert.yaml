@@ -1,16 +1,11 @@
 - hosts: localhost 
-  
+  vars_files:
+    - vars/alteon_params.yml
+    
   tasks:
-  - name: alteon configuration command
+  - name: upload certificate
     radware.radware_modules.alteon_config_ssl_cert:
-      provider:
-        server: 192.168.1.1
-        user: admin
-        password: admin
-        validate_certs: no
-        https_port: 443
-        ssh_port: 22
-        timeout: 5
+      provider: "{{ radware_provider }}"
       state: present
       parameters:
         index: demo_cert
@@ -31,5 +26,42 @@
           0lp7OyQKsL/tOgNSnU/bzkEhuFLj9KSQtRxpfZf8X+jjtoObB6aRk+M/fNd/bm2s
           SOpp+bm13htPmhgvI+CIND63rORp3oIQz0s=
           -----END CERTIFICATE-----
-
+          
+  - name: upload key
+    radware.radware_modules.alteon_config_ssl_key:
+      provider: "{{ radware_provider }}"
+      state: present
+      parameters:
+        index: demo_cert
+        passphrase: password
+        description: my_cert
+        content: |
+          -----BEGIN RSA PRIVATE KEY-----
+          MIICXQIBAAKBgQC5GUJqjBQp3LwYepaWQAaVFe5BguFiVBsPQVvKmRKVZJ76IDfB
+          TTd8b++83mvqvX+xu5m5jsm96oxmLpcbHVRF9ywUJdZLX2mC8tBsTuVawAIYrU64
+          wu7kA32a4LZyL4y5d55sN/FCsYWVOnHOZRhu87wU3XHsKsf9dIVXhmwqBQIDAQAB
+          AoGAESwGvVvBgyC3Uo4M6mOGOM6QDAPYZQboe8HUgjcxQirTlODoS0aenyzDUQJR
+          gLWT4ylEWbKlhLj9zX0FB77w0mRgJJ7bUYSkiO8m6YdwjTCG8XtCtMI0dcTlRZEx
+          Yvc2kYsoST8AIDHSLosllatyp7jZetAUjYp/xBmJEcAjTQECQQDpAPzR48Bd27/e
+          J8EYSpfHXGRI+YlF85NoBkGXwG7PAHbQGOXxGiFAanyiRNKT09fZN7GP8wK7KRxG
+          9ePjb7SPAkEAy13pjzv1cybKVgNAKro613Z2UfeK5wkgYbz4rQwR1gqLVvB0dEGb
+          S/QBzTkTWllXSvjH8+wmG4YDJOvx5tDKKwJBAMXhitUOIU8U04vuIzVoFCLBuoGn
+          OwfnZubPeWFRkknG0SDGJHJwiJDWXubIoDXfkc7uV6Qy87zTmypApbuAIM0CQDQ6
+          XyRA8s1q9eXXGeCfSUNSkhqE53BkQKO5Q2g1xFLjDFv8jvvYaYi9FsVc1iKK9Uc0
+          0y1KxZKl/SK7UbnEf1cCQQDhllweq/RWdeFybQCYzQTuJQ3OooASdnDIPKZsVIfT
+          k5BtOy2Y3FPXhMnpfHyRCYq3zre/yDF+6xM0DAt6itOW
+          -----END RSA PRIVATE KEY-----
+          
+  - name: create ssl policy
+    radware.radware_modules.alteon_config_ssl_policy:
+      provider: "{{ radware_provider }}"
+      state: present
+      parameters:
+        index: ssl_pol_demo
+        description: demo_policy
+        state: enabled
+        be_ssl_encryption: enabled
+        secure_renegotiation: 3
+        be_hw_offload_rsa: disabled
+        http_redirection_conversion: disabled
 
