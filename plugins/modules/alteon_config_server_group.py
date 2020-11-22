@@ -122,6 +122,7 @@ options:
         - bandwidth
         - phash
         - svcLeast
+        - hrw
       slb_rport_metric:
         description:
           - Specifies how a specific service instance (port) is selected on a real server when multiple service ports are configured on that real server.
