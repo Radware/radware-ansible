@@ -314,6 +314,14 @@ options:
         choices:
         - enabled
         - disabled
+      https_ssl_tls1_3:
+        description:
+          - Allowe TLS 1.3 for the management connection.
+        required: false
+        default: enabled
+        choices:
+        - enabled
+        - disabled
       cli_login_banner:
         description:
           - The user-defined login banner.
