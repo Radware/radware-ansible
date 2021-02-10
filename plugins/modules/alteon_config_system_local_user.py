@@ -173,6 +173,14 @@ options:
         required: false
         default: null
         type: str
+      certificate_management:
+        description:
+          - Enable/disable certificate management permissions.
+        required: false
+        default: disabled
+        choices:
+        - enabled
+        - disabled
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
