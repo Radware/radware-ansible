@@ -193,6 +193,8 @@ options:
       - (!)slb_pip6
       - ha_service
       - (!)ha_service               
+      - snmpv3_target_params
+      - (!)snmpv3_target_params               
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
