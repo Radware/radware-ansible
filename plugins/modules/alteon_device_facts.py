@@ -195,6 +195,8 @@ options:
       - (!)ha_service               
       - snmpv3_target_params
       - (!)snmpv3_target_params               
+      - bgp_global
+      - (!)bgp_global               
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
