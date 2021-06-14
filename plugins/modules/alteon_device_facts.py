@@ -196,7 +196,9 @@ options:
       - snmpv3_target_params
       - (!)snmpv3_target_params               
       - bgp_global
-      - (!)bgp_global               
+      - (!)bgp_global  
+      - bgp_peer
+      - (!)bgp_peer                            
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
