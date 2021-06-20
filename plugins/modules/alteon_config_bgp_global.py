@@ -13,12 +13,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = r'''
 module: alteon_config_bgp_global
-short_description: BGP global parameters in Radware Alteon
+short_description: Manage BGP global parameters in Radware Alteon
 description:
-  - configure BGP global parameters in Radware Alteon.
+  - configure BGP global parameters in Radware Alteon. 
 version_added: '2.9'
 author: 
-  - Michal Greenberg (@michalg)
+  - Leon Meguira (@leonmeguira)
+  - Nati Fridman (@natifridman)
 options:
   provider:
     description:
@@ -107,7 +108,7 @@ options:
         choices:
         - on
         - off
-     local_preference:
+      local_preference:
         description:
           - Set Local Preference.
         required: false
@@ -115,7 +116,7 @@ options:
         type: int
       max_as_path_length:
         description:
-          - Set Max Autonomous System (AS) Path Length.
+          - Set max Autonomous System (AS) path length.
         required: false
         default: null
         type: int
@@ -125,7 +126,7 @@ options:
         required: false
         default: null
         type: int
-      stop_vip_advertisement:
+      vip_advertisement:
         description:
           - Enable or Disable sending VIP advertisement.
         required: false
@@ -133,7 +134,7 @@ options:
         choices:
         - enabled
         - disabled
-      enable_floating_ip_advertisement:
+      floating_ip_advertisement:
         description:
           - Enable or Disable advertising floating IP address.
         required: false
@@ -172,11 +173,6 @@ EXAMPLES = r'''
       router_id: 2.2.2.2
       bgp_status: on
       local_preference: 200
-      max_as_path_length: 60
-      as_number: 10
-      stop_vip_advertisement: disabled
-      enable_floating_ip_advertisement: enabled
-      bgp_mode: frr
 '''
 
 RETURN = r'''
@@ -199,7 +195,6 @@ from ansible_collections.radware.radware_modules.plugins.module_utils.alteon imp
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.bgp_global import BgpGlobalConfigurator
 
-
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
         super(ModuleManager, self).__init__(BgpGlobalConfigurator, **kwargs)
@@ -219,4 +214,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
