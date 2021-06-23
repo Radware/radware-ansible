@@ -12,11 +12,10 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
-module: alteon_config_l3_interface
-short_description: Manage l3 interface in Radware Alteon
+module: alteon_config_bgp_peer
+short_description: create and manage BGP peer in Radware Alteon
 description:
-  - Alteon needs an IP interface for each subnet to which it is connected so it can communicate with the real servers and other devices attached to it that receive switching services. 
-  - Alteon can be configured with up to 256 IP interfaces. Each IP interface represents Alteon on an IP subnet on your network.
+  - create and manage BGP peer in Radware Alteon. 
 version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
@@ -140,7 +139,7 @@ options:
         default: none
         choices:
         - none
-        - import
+        - import_
         - originate
         - redistribute
       advertising_ospf_routes:
@@ -233,7 +232,7 @@ options:
         description:
           - Enable or disable Bidirectional Forwarding Detection (BFD).
         required: false
-        default: ipv4
+        default: off
         choices:
         - on
         - off
@@ -321,7 +320,7 @@ options:
         required: false
         default: null
         type: str
-      PasswordStatus:
+      password_status:
         description:
           - Enable or disable using authentication password.
           - This field is can be configured only when BGP global mode is FRR.
@@ -340,7 +339,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_l3_interface:
+  radware.radware_modules.alteon_config_bgp_peer:
     provider: 
       server: 192.168.1.1
       user: admin
