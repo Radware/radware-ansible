@@ -201,6 +201,8 @@ options:
       - (!)bgp_peer                            
       - group_real_server
       - (!)group_real_server                            
+      - bgp_aggr
+      - (!)bgp_aggr                            
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
