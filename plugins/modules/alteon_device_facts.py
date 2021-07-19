@@ -203,6 +203,8 @@ options:
       - (!)group_real_server                            
       - bgp_aggr
       - (!)bgp_aggr                            
+      - alteon_cli_command
+      - (!)alteon_cli_command                            
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
