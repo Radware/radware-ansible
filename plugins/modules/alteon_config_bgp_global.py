@@ -66,9 +66,9 @@ options:
   state:
     description:
       - When C(present), guarantees that the object exists with the provided attributes.
-      - When C(absent), when applicable removes the object.
+      - When C(absent), when applicable removes the object. Not supported in this module.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it
+      - When C(overwrite), removes the object if exists then recreate it. Not supported in this module.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
