@@ -12,7 +12,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
-module: alteo_software_image_upload
+module: alteon_software_image_upload
 short_description: Upload Alteon Image
 description:
   - Upload Alteon Software Image on device
@@ -114,7 +114,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon device software
-  radware.radware_modules.alteo_software_image_upload:
+  radware.radware_modules.alteon_software_image_upload:
     provider: 
       server: 192.168.1.1
       user: admin
