@@ -118,7 +118,7 @@ options:
         required: false
         default: null
         type: int
-      apm_pgpm_threshold_percent:
+      apm_pgpm_threshold_percent: obsolete
         description:
           - The threshold, in percent, of the license capacity APM PgPM (page per minute) for sending an alert.
         required: false
