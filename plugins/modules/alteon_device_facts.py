@@ -204,7 +204,9 @@ options:
       - bgp_aggr
       - (!)bgp_aggr                            
       - alteon_cli_command
-      - (!)alteon_cli_command                            
+      - (!)alteon_cli_command  
+      - snmpv3_usm_user
+      - (!)snmpv3_usm_user  
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
