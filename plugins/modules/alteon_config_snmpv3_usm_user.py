@@ -124,7 +124,7 @@ options:
         default: null
         choices:
         - NONE
-        - DEC
+        - DES
         - AES128
         - AES256
       privacy_password:
