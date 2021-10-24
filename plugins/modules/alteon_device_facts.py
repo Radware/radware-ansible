@@ -207,6 +207,8 @@ options:
       - (!)alteon_cli_command  
       - snmpv3_usm_user
       - (!)snmpv3_usm_user  
+      - snmpv3_group
+      - (!)snmpv3_group  
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
