@@ -108,7 +108,7 @@ options:
         type: int
       ssl_cps_threshold_percent:
         description:
-          - The threshold, in percent, of the SSL CPS utilization for sending alerts.
+          - The threshold, in percent, of the throughput license utilization for sending alerts.
         required: false
         default: null
         type: int
@@ -118,8 +118,9 @@ options:
         required: false
         default: null
         type: int
-      apm_pgpm_threshold_percent: obsolete
+      apm_pgpm_threshold_percent: 
         description:
+          - obsolete.
           - The threshold, in percent, of the license capacity APM PgPM (page per minute) for sending an alert.
         required: false
         default: 90
@@ -158,7 +159,7 @@ options:
         - disabled
       disk_extremely_high_utilization_state:
         description:
-          - Enable/Disable extremely high disk utilization alerts.
+          -  Enable/Disable extremely high disk utilization alerts.
         required: false
         default: enabled
         choices:
@@ -166,7 +167,7 @@ options:
         - disabled
       disk_high_utilization_state:
         description:
-          - Enable/Disable high disk utilization alerts.
+          -  Enable/Disable high disk utilization alerts.
         required: false
         default: enabled
         choices:
@@ -192,7 +193,7 @@ options:
         type: int
       disk_critical_trap_interval_minute:
         description:
-          - The interval, in minutes, to resend the critical disk utilization trap.
+          - The interval, in minutes, to resend the high disk utilization trap.
         required: false
         default: 5
         type: int
