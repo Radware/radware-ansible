@@ -118,8 +118,9 @@ options:
         required: false
         default: null
         type: int
-      apm_pgpm_threshold_percent: obsolete
+      apm_pgpm_threshold_percent: 
         description:
+          - obsolete.
           - The threshold, in percent, of the license capacity APM PgPM (page per minute) for sending an alert.
         required: false
         default: 90
@@ -158,7 +159,7 @@ options:
         - disabled
       disk_extremely_high_utilization_state:
         description:
-          - Enable/Disable extremely high disk utilization alerts.
+          -  Enable/Disable extremely high disk utilization alerts.
         required: false
         default: enabled
         choices:
@@ -166,7 +167,7 @@ options:
         - disabled
       disk_high_utilization_state:
         description:
-          - Enable/Disable high disk utilization alerts.
+          -  Enable/Disable high disk utilization alerts.
         required: false
         default: enabled
         choices:
