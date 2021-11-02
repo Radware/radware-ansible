@@ -142,7 +142,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_snmpv3_target_params:
+  radware.radware_modules.alteon_config_snmpv3_usm_user:
     provider: 
       server: 192.168.1.1
       user: admin
