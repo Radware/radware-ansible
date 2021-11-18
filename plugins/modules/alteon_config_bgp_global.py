@@ -145,11 +145,24 @@ options:
       bgp_mode:
         description:
           - Set BGP mode (FRR or Legacy).
+          - This fields should be set in seperate from the other fields in this module.
+          - This fields is supported only on branch 33.0 and up.
         required: false
         default: legacy
         choices:
         - legacy
         - frr
+      ecmp_mode:
+        description:
+          - Set ECMP mode. this field can be set only when BGP mode is in FRR mode.
+          - This fields is supported only on branch 33.0 and up.
+        required: false
+        default: legacy
+        choices:
+        - off
+        - ibgp
+        - ebgp
+        - eibgp
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
