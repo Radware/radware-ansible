@@ -202,13 +202,11 @@ obj:
 
 from ansible.module_utils.basic import AnsibleModule
 import traceback
-import logging
 
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.bgp_global import BgpGlobalConfigurator
-from radware.alteon.sdk.alteon_managment import AlteonMngInfo
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
@@ -218,11 +216,6 @@ class ModuleManager(AlteonConfigurationModule):
 def main():
     spec = ArgumentSpec(BgpGlobalConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
-
-    logging.basicConfig(filename="logBgpGlobal.txt", filemode='a',
-          format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
-          level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
-    log = logging.getLogger()
 
     try:
         mm = ModuleManager(module=module)
