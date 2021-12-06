@@ -195,6 +195,8 @@ options:
       - (!)ha_service               
       - snmpv3_target_params
       - (!)snmpv3_target_params               
+      - snmpv3_target_addr_new_cfg
+      - (!)snmpv3_target_addr_new_cfg               
       - bgp_global
       - (!)bgp_global  
       - bgp_peer
