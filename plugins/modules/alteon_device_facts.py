@@ -211,6 +211,8 @@ options:
       - (!)snmpv3_usm_user  
       - snmpv3_group
       - (!)snmpv3_group  
+      - snmpv3_community
+      - (!)snmpv3_community  
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
@@ -482,7 +484,7 @@ from radware.alteon.sdk.configurators.l3_bootp_relay import BOOTPRelayConfigurat
 from radware.alteon.sdk.configurators.ha_configuration_sync import ConfigurationSyncConfigurator
 from radware.alteon.sdk.configurators.high_availability import HighAvailabilityConfigurator
 from radware.alteon.sdk.configurators.global_traffic_redirection import GlobalRedirectionConfigurator
-
+import logging
 
 STATE_BEANS_VAR_NAME = 'state_beans'
 STATS_BEANS_VAR_NAME = 'stats_beans'
@@ -677,8 +679,15 @@ class ModuleManager(AlteonAnsibleModule):
 def main():
     spec = ArgumentSpecs()
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
+
+    logging.basicConfig(filename="logDeviceFacts.txt", filemode='a',
+          format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
+          level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
+    log = logging.getLogger()
+
     mm = None
     try:
+        log.debug('stat alteon device facts:')
         mm = ModuleManager(module=module)
         result = mm.exec_module()
         module.exit_json(**result)
