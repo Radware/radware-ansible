@@ -3,6 +3,7 @@ authors:
   - Nati Fridman (@natifridman)
   - Nofar Kovalsky-Livkind (@Nofarliv)
   - Michal Greenberg (@micahlg)
+  - Ofe Epstein (@ofere)
 dependencies: {}
 description: A collection of Ansible Modules for Radware devices
 documentation: ''
@@ -20,5 +21,5 @@ tags:
 - collection
 - networking
 - sdn
-version: 0.1.9
+version: 0.1.10
 
