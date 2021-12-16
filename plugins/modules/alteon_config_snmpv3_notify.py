@@ -95,30 +95,16 @@ options:
     suboptions:
       name:
         description:
-          - Set view tree family name.
+          - Set notify name.
         required: true
         default: null
         type: str
-      tree:
+      tag:
         description:
-          - Set MIB subtree(OID) which defines a family of view subtrees.
-        required: true
-        default: null
-        type: str
-      mask:
-        description:
-          - Set view mask <bitmask, max size 32 characters>.
+          - Set notify tag.
         required: false
         default: null
         type: str
-      type:
-        description:
-          - Set view type.
-        required: false
-        default: null
-        choices:
-        - Included
-        - Excluded
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
@@ -139,10 +125,8 @@ EXAMPLES = r'''
       timeout: 5
     state: present
     parameters:
-      name: viewName
-      tree: 1.2.3.4
-      mask: 1
-      type: Included
+      name: notifyName
+      tag: notifyTag
 '''
 
 RETURN = r'''
@@ -163,16 +147,16 @@ import traceback
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
-from radware.alteon.sdk.configurators.snmpv3_view_tree_family import SNMPv3ViewTreeFamilyConfigurator
+from radware.alteon.sdk.configurators.snmpv3_notify import SNMPv3NotifyConfigurator
 
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
-        super(ModuleManager, self).__init__(SNMPv3ViewTreeFamilyConfigurator, **kwargs)
+        super(ModuleManager, self).__init__(SNMPv3NotifyConfigurator, **kwargs)
 
 
 def main():
-    spec = ArgumentSpec(SNMPv3ViewTreeFamilyConfigurator)
+    spec = ArgumentSpec(SNMPv3NotifyConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
     try:

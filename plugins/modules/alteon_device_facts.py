@@ -215,6 +215,8 @@ options:
       - (!)snmpv3_community  
       - snmpv3_view_tree_family
       - (!)snmpv3_view_tree_family               
+      - snmpv3_notify
+      - (!)snmpv3_notify               
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
