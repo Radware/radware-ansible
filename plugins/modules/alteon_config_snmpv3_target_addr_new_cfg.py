@@ -99,7 +99,7 @@ options:
         required: true
         default: null
         type: str
-      TransIp:
+      trans_ip:
         description:
           - Set target transport address IP.
         required: false
@@ -114,37 +114,37 @@ options:
         default: null
         choices:
         - 1-65535
-      taglist:
+      tag_list:
         description:
           - set tag list.
         required: false
         default: null
         type: str
-      paramsName:
+      params_name:
         description:
           - Set targetParams name.
         required: true
         default: null
         type: str
-      EnaTrap:
+      ena_trap:
         description:
           - set enable Trap to a particular target address.
         required: false
         default: null
         type: str
-      DisTrap:
+      dis_trap:
         description:
           - set disable Trap to a particular target address.
         required: false
         default: null
         type: str
-      TransIpv6:
+      trans_ipv6:
         description:
           - set Target transport Ipv6 address.
         required: false
         default: null
         type: str
-      IpVer:
+      ip_ver:
         description:
           - set Version of the target Ip Address.
         required: false
@@ -173,8 +173,8 @@ EXAMPLES = r'''
       name: tparams1
       address: 1.1.1.1
       port: 70
-      taglist: tag1 tag2
-      pname: targetParam1
+      tag_list: tag1 tag2
+      params_name: targetParam1
 '''
 
 RETURN = r'''
