@@ -208,12 +208,12 @@ EXAMPLES = r'''
       auth_ena_traps: enabled
       snmp_access: read_write
       snmp_read_comm: public
-      snmp_timeout: 5,
-      snmp_trap1: 1.1.1.1,
-      snmp_trap1_ipv6_addr: null,
-      snmp_trap2: 2.2.2.2,
-      snmp_trap2_ipv6_addr: null,
-      snmp_v1v2_access: enabled,
+      snmp_timeout: 5
+      snmp_trap1: 1.1.1.1
+      snmp_trap1_ipv6_addr: null
+      snmp_trap2: 2.2.2.2
+      snmp_trap2_ipv6_addr: null
+      snmp_v1v2_access: enabled
       snmp_write_comm: private
       sys_contact: contact
       sys_location: location
