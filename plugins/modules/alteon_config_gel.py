@@ -12,14 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
-module: alteon_config_snmp_general
-short_description: Manage SNMP general parameters in Radware Alteon
+module: alteon_config_gel
+short_description: Manage GEL parameters in Radware Alteon
 description:
-  - configure SNMP general parameters in Radware Alteon. 
+  - configure GEL parameters in Radware Alteon. 
 version_added: '2.9'
 author: 
-  - Leon Meguira (@leonmeguira)
-  - Nati Fridman (@natifridman)
+  - Ofer Epstein (@ofere)
 options:
   provider:
     description:
@@ -92,99 +91,70 @@ options:
     type: bool
   parameters:
     description:
-      - SNMP general parameters configuration.
+      - GEL parameters configuration.
     suboptions:
-      snmp_access:
+      state:
         description:
-          - Set SNMP access control.
-        required: false
-        default: disabled
-        choices:
-        - read_only
-        - read_write
-        - disabled
-      snmp_v1v2_access:
-        description:
-          - Enable/disable V1/V2 access.
-        required: false
-        default: enabled
-        choices:
-        - enabled
-        - disabled
-      sys_name:
-        description:
-          - Set SNMP sysName
-        required: false
-        default: null
-        type: str
-      sys_location:
-        description:
-          - Set SNMP sysLocation.
-        required: false
-        default: null
-        type: str
-      sys_contact:
-        description:
-          - Set SNMP sysLocation.
-        required: false
-        default: null
-        type: str
-      snmp_read_comm:
-        description:
-          - Set SNMP read community string.
-        required: false
-        default: null
-        type: str
-      snmp_write_comm:
-        description:
-          - Set SNMP write community string.
-        required: false
-        default: null
-        type: str
-      trap_src_if:
-        description:
-          - Set SNMP trap source interface.
-        required: false
-        default: null
-        type: int
-      snmp_timeout:
-        description:
-          - Set timeout for the SNMP state machine.
-        required: false
-        default: null
-        type: int
-      snmp_trap1_ipv6_addr:
-        description:
-          - Set first SNMP trap host address (ipv6).
-        required: false
-        default: null
-        type: str
-      snmp_trap1:
-        description:
-          - Set Set first SNMP trap host address (ipv4)
-        required: false
-        default: null
-        type: str
-      snmp_trap2_ipv6_addr:
-        description:
-          - Set Set second SNMP trap host address (ipv6)
-        required: false
-        default: null
-        type: str
-      snmp_trap2:
-        description:
-          - Set Set seond SNMP trap host address (ipv4)
-        required: false
-        default: null
-        type: str
-      auth_ena_traps:
-        description:
-          - Enable/disable SNMP sysAuthenTrap.
+          - Enable/Disable license server integration.
         required: false
         default: disabled
         choices:
         - enabled
         - disabled
+      primary_url:
+        description:
+          - Set primary license server IP address or URL.
+        required: false
+        default: null
+        type: str
+      secondary_url:
+        description:
+          - Set secondary license server IP address or URL.
+        required: false
+        default: null
+        type: str
+      primary_dns_ipv4:
+        description:
+          - Set primary IPV4 DNS server address
+        required: false
+        default: null
+        type: str
+      secondary_dns_ipv4:
+        description:
+          - Set secondary IPV4 DNS server address
+        required: false
+        default: null
+        type: str
+      primary_dns_ipv6:
+        description:
+          - Set primary IPV6 DNS server address
+        required: false
+        default: null
+        type: str
+      secondary_dns_ipv6:
+        description:
+          - Set secondary IPV6 DNS server address
+        required: false
+        default: null
+        type: str
+      interval:
+        description:
+          - Set license revalidation time interval.
+        required: false
+        default: null
+        type: int
+      retries:
+        description:
+          - Set number of retries for determining communication failure.
+        required: false
+        default: null
+        type: int
+      retry_interval:
+        description:
+          - Set the retry interval.
+        required: false
+        default: null
+        type: int
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
@@ -194,7 +164,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_snmp_general:
+  radware.radware_modules.alteon_config_gel:
     provider: 
       server: 192.168.1.1
       user: admin
@@ -205,20 +175,14 @@ EXAMPLES = r'''
       timeout: 5
     state: present
     parameters:
-      auth_ena_traps: enabled
-      snmp_access: read_write
-      snmp_read_comm: public
-      snmp_timeout: 5
-      snmp_trap1: 1.1.1.1
-      snmp_trap1_ipv6_addr: null
-      snmp_trap2: 2.2.2.2
-      snmp_trap2_ipv6_addr: null
-      snmp_v1v2_access: enabled
-      snmp_write_comm: private
-      sys_contact: contact
-      sys_location: location
-      sys_name: name
-      trap_src_if: 1
+      state: enabled
+      primary_url: https://a.com
+      secondary_url: https://b.com
+      primary_dns_ipv4: 1.1.1.1
+      secondary_dns_ipv4: 2.2.2.2
+      interval: 300
+      retries: 3
+      retry_interval: 60
 '''
 
 RETURN = r'''
@@ -239,15 +203,15 @@ import traceback
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
-from radware.alteon.sdk.configurators.snmp_general import SnmpGeneralConfigurator
+from radware.alteon.sdk.configurators.gel import GelConfigurator
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
-        super(ModuleManager, self).__init__(SnmpGeneralConfigurator, **kwargs)
+        super(ModuleManager, self).__init__(GelConfigurator, **kwargs)
 
 
 def main():
-    spec = ArgumentSpec(SnmpGeneralConfigurator)
+    spec = ArgumentSpec(GelConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
     try:

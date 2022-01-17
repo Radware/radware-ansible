@@ -219,6 +219,8 @@ options:
       - (!)snmpv3_notify               
       - snmp_general
       - (!)snmp_general
+      - gel
+      - (!)gel
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
