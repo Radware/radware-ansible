@@ -221,6 +221,8 @@ options:
       - (!)snmp_general
       - gel
       - (!)gel
+      - slb_port
+      - (!)slb_port
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
