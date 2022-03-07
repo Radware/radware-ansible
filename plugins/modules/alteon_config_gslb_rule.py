@@ -244,13 +244,18 @@ EXAMPLES = r'''
       domain_name: www.test.com
       max_dns_resource_records: 3
       rule_metrics:
-        first:
+        -
           metric: network
           network_ids:
             - 55
             - 56
-        second:
-          metric: absleastconns                  
+          priority: 1
+        -
+          metric: response
+          network_ids:
+            - 57
+            - 58
+          priority: 8
 '''
 
 RETURN = r'''
