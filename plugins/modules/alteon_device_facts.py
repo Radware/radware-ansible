@@ -223,6 +223,8 @@ options:
       - (!)gel
       - slb_port
       - (!)slb_port
+      - snmpv3_access
+      - (!)snmpv3_access
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
