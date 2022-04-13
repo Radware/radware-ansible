@@ -165,17 +165,12 @@ options:
         - group
       vip_health_check_mode:
         description:
-          - The real server or real server group used as the backup or overflow server or server group for this real server group.
-          - You can assign a backup real server or real server group to prevent loss of service if the entire real server group fails.
-          - If the real server group becomes unavailable, Alteon activates the backup real server or real server group until one of the original real servers becomes available again.
-          - The backup server or real server group is also used in overflow situations. If all the servers in the real server group reach their maximum connections limit, Alteon activates the backup server or real server group to provide additional processing power until resources become available on one of the original servers.
-          - You can assign the same backup real server or real server group to more than one real server group at the same time.
+          - Specifies whether to enable VIP health checking in DSR mode.
         required: false
-        default: none
+        default: enabled
         choices:
-        - none
-        - server
-        - group
+        - enabled
+        - disabled
       persist_hash_mask:
         description:
           - Specifies whether Alteon hashes the client IP address or network for the persistent hash selection.
