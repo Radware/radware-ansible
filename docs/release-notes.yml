@@ -1,0 +1,49 @@
+RELEASE NOTES
+
+Ansible versions:  
+	Radware Modules: 0.2.5 
+	Alteon SDK 0.8b5 
+
+Tested with Alteon versions: 32.4.10.0, 32.6.8.0, 33.0.4.0, and 33.5.0.0. 
+
+New modules: 
+DNS GEL configuration 
+SLB port configuration 
+SNMPV3 access table 
+
+Bug Fixes:
+DE72820 - fix the description of vip_health_check_mode in the module alteon_config_server_group.
+
+Ansible versions:  
+	Radware Modules: 0.1.13 
+	Alteon SDK: 0.7b19 
+
+Tested with Alteon versions: 32.4.9.0, 32.6.7.0, and 33.0.3.0. 
+
+New modules: 
+snmpv3 usm user table 
+snmpv3 Security To Group Table 
+snmpv3 target address table 
+snmpv3 community table 
+snmvp3 view tree family 
+snmpv3 notify table 
+snmpv3 general parameters 
+
+Changes: 
+Support for new ECMP mode parameter for BGP global configuration module. 
+
+Bug Fixes: 
+DE68259 - Ansible facts gathering fails due to the removal of APM feature support. 
+DE69528 - Ansible facts gathering fails due to the BGP global and sys alerts modules. 
+DE69867 - Ansible facts gathered from standalone devices do not provide the correct image list. 
+
+
+
+Known Limitations: 
+1. When you set a password, Ansible reports that a change was not performed (changed=0) even when the action was executed successfully.
+2. In Ansible log, if there are words that include the complete user password string, the text is displayed as ******* (for example, if the password is "are" and in the log you have the word Radware, it appears as Radw******). This is a general Ansible limitation and thus it is recommended to use complex passwords. 
+3. When running the Ansible module, "alteon_device_facts", MP CPU might reach 100%. This may cause performance issues such as slow web UI and SSH operations, and unstable connectivity to the MNG port default gateways and GSLB remote sites.
+ 
+
+
+

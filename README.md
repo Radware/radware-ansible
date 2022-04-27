@@ -7,11 +7,12 @@ The radware-ansible project provides an Ansible collection for managing and auto
 - Ansible >= 2.9
 - Python >= 3.6
 - alteon-sdk python package
-- Alteon Version >= 31.0.10.0, 32.2.2.0
 
 ## Installation
 ```
 # ansible-galaxy collection install radware.radware_modules
+
+Release notes are included in the collection, under docs folder
 ```
 
 ## Example Usage
