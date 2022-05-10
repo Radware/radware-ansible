@@ -1,8 +1,8 @@
 RELEASE NOTES
 
 Ansible versions:  
-	Radware Modules: 0.2.5 
-	Alteon SDK 0.8b5 
+	Radware Modules: 0.2.6 
+	Alteon SDK 0.8b6 
 
 Tested with Alteon versions: 32.4.10.0, 32.6.8.0, 33.0.4.0, and 33.5.0.0. 
 
