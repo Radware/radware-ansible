@@ -1,5 +1,14 @@
 RELEASE NOTES
 
+Ansible versions: 
+•	Radware Modules: 0.3.2
+•	Alteon SDK 0.9b2	
+Was tested with Alteon versions: 32.4.11.0, 32.6.9.0, 33.0.5.0, and 33.5.1.0.
+Bug Fixes
+•	DE70476 - Ansible facts gathering fails when there is a non-generated certificate.
+•	DE73620 - Fixed documentation in alteon-device-facts.
+
+
 Ansible versions:  
 	Radware Modules: 0.2.6 
 	Alteon SDK 0.8b6 
@@ -12,7 +21,7 @@ SLB port configuration
 SNMPV3 access table 
 
 Bug Fixes:
-DE72820 - fix the description of�vip_health_check_mode in the module alteon_config_server_group.
+DE72820 - fix the description of�vip_health_check_mode in the module alteon_config_server_group.
 
 Ansible versions:  
 	Radware Modules: 0.1.13 
