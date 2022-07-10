@@ -1,13 +1,14 @@
 RELEASE NOTES
 
 Ansible versions: 
-•	Radware Modules: 0.3.2
-•	Alteon SDK 0.9b2	
+•	Radware Modules: 0.3.3
+•	Alteon SDK 0.9b3	
 Was tested with Alteon versions: 32.4.11.0, 32.6.9.0, 33.0.5.0, and 33.5.1.0.
 Bug Fixes
 •	DE70476 - Ansible facts gathering fails when there is a non-generated certificate.
 •	DE73620 - Fixed documentation in alteon-device-facts.
-
+changes:
+Support for BGP ASdot notation.
 
 Ansible versions:  
 	Radware Modules: 0.2.6 

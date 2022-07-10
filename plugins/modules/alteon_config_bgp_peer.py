@@ -108,10 +108,19 @@ options:
         type: str
       remote_as_number:
         description:
-          - The remote automonos system (AS) number of the BGP peer. 0 means none.
+          - Set the remote automonos system (AS) number of the BGP peer using plain notation. 0 means none.
+          - Use either this or remote_asdot_number (as asdot notation), but not both.
         required: false
         default: null
         type: int
+      remote_asdot_number:
+        description:
+          - Set the remote automonos system (AS) number of the BGP peer, using asdot notation.
+          - Use either this or remote_as_number (as plain notation), but not both.
+          - thia field is available from alteon versions: 33.0.5.0 and 33.5.1.0
+        required: false
+        default: null
+        type: str
       ttl:
         description:
           - The time-to-live value in seconds of the BGP peer IP datagram.
