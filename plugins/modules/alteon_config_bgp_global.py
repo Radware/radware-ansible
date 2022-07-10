@@ -122,10 +122,27 @@ options:
         type: int
       as_number:
         description:
-          - Set Autonomous System (AS) number.
+          - Set Autonomous System (AS) number using plain notation.
+          - Use either this or asdot_number (as asdot notation), but not both.
         required: false
         default: null
         type: int
+      asdot_status:
+        description:
+          - Enable/Disable ASDOT Notation.
+        required: false
+        default: off
+        choices:
+        - on
+        - off
+      asdot_number:
+        description:
+          - Set Autonomous System (AS) number using asdot notation.
+          - Use either this or as_number (as plain notation), but not both.
+          - thia field is available from alteon versions: 33.0.5.0 and 33.5.1.0
+        required: false
+        default: null
+        type: str
       vip_advertisement:
         description:
           - Enable or Disable sending VIP advertisement.
