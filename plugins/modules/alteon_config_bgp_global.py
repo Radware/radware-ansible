@@ -139,7 +139,7 @@ options:
         description:
           - Set Autonomous System (AS) number using asdot notation.
           - Use either this or as_number (as plain notation), but not both.
-          - thia field is available from alteon versions: 33.0.5.0 and 33.5.1.0
+          - This field is available from alteon versions 33.0.5.0 and 33.5.1.0.
         required: false
         default: null
         type: str
