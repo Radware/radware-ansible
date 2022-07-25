@@ -225,6 +225,8 @@ options:
       - (!)slb_port
       - snmpv3_access
       - (!)snmpv3_access
+      - l7_content_class
+      - (!)l7_content_class
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
