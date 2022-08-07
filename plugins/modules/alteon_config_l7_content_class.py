@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2022, Radware LTD. 
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -214,7 +214,7 @@ EXAMPLES = r'''
     parameters:
       content_class_id: 3
       name: content_class3
-      type: http2
+      content_class_type: http2
 '''
 
 RETURN = r'''
