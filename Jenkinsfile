@@ -4,7 +4,7 @@ I'm Jenkinsfile and I rule the build process of current repository.
 I'm identical among all branches.
 Editing me, could fail builds.
 !!Please don't edit me unless you know what are you doing for 100%!!
-If you are only 99.9% sure, consult CM team */
+If you are only 99.9% sure, consult CM team  test*/
 
 
 // Define on which agent pipeline will run (branch dependent)
