@@ -46,11 +46,6 @@ pipeline {
         label agentLabel
     } // agent
 
-    triggers {
-      	// Build when a changed is pushed to Bitbucket
-        bitbucketPush()
-    } // triggers
-
     options {
         disableConcurrentBuilds()
         timeout(20)
