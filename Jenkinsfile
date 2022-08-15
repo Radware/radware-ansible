@@ -108,10 +108,20 @@ pipeline {
 
                     // Upload package
                     } else if (RELEASE_PACKAGE == "true") {
-                        withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
-                            println "Upload to release package to galaxy official server"
+                        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
+                            println "Validate RC package exists"
+                            try {
+                                env.pkgVersion = sh(returnStdout: true, script: '''curl -XPOST -u "${gitUser}:${gitPass}" ${devart01}/api/search/aql" -H "Content-Type: text/plain" -d 'items.find({"$and" : [{"repo" : "'"${artAnsibleRepo}"'"}, {"@version" : "*"}]}).include("property.*")' | grep -o '"value" : "[^"]*' | grep -o "${VERSION}" ''').trim()
+                            } catch (err) {
+                                env.pkgVersion = ""
+                            } // try catch
                         } // withCredentials
-                    } // else if  
+                        if ("${VERSION}" == "${pkgVersion}"){
+                            println "Upload to release package to galaxy official server"
+                        } else {
+                            error("Version: ${VERSION} doesn't exist on Artifactory")
+                        } // else if
+                    } // else if
                 } // script
             } // steps
         } // stage Upload Package
