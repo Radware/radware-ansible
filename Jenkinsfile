@@ -39,7 +39,10 @@ pipeline {
       	// git credentials (cmjen06 generated)
         gitCreds = 'c61b51e5-10a5-41a3-b480-6c3946624c0d'
 
-        pythonImg = "3rdpkgartifactory:17111/python:3.7"
+        // Artifactory variables
+        artAnsibleRepo = "alteon-ansible-local"
+        
+        ansibleImg = "3rdpkgartifactory:17111/ibmcom/ansible-lifecycle-driver:3.5.1"
 
     } // environment
     agent {
@@ -64,29 +67,44 @@ pipeline {
             } // when
             steps {
               println "create python package"
-              sh """docker run --rm -v ${WORKSPACE}:/workspace -w /workspace ${pythonImg} /bin/bash -c "python3 tools/build_project.py && chmod 777 -R *" """
+              sh """docker run --user root --rm -v ${WORKSPACE}:/workspace -w /workspace ${ansibleImg} /bin/bash -c "ansible-galaxy collection build && chmod 777 -R *" """
             } // steps
         } // stage Build project
         stage('Upload Package') {
             when { 
                 anyOf { 
-                    expression { c_BRANCH_NAME == 'create_job' }
+                    expression { c_BRANCH_NAME == 'master' }
                 } // anyOf
             } // when
             steps {
                 script{
                     if (RELEASE_PACKAGE == "false") {
                         withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
-                            println "Upload to test pypi server"
+                            println "Upload to test package to artifactory (Devar01)"
+                            artserver = Artifactory.newServer url: "${devart01}"
+                            artserver.username = "${gitUser}"
+                            artserver.password = "${gitPass}"
+
+                            def uploadSpec = """{
+                                "files": [
+                                    {
+                                        "pattern": "${WORKSPACE}/*.tar.gz",
+                                        "target": "${artAnsibleRepo}/gil_test",
+                                        "props": "git.branch=${GIT_BRANCH}",
+                                        "recursive": "false"
+                                    }
+                                ]
+                            }"""
+
+                            artserver.upload(uploadSpec)
                         } // withCredentials
 
-                    // upload
+                    // Upload package
                     } else if (RELEASE_PACKAGE == "true") {
                         withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
-                            println "Upload to release pypi server"
+                            println "Upload to release package to galaxy official server"
                         } // withCredentials
-                    } // else if
-                    
+                    } // else if  
                 } // script
             } // steps
         } // stage Upload Package
