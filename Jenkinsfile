@@ -59,6 +59,13 @@ pipeline {
         booleanParam(name: 'RELEASE_PACKAGE', defaultValue: false, description: '<br><b><font color="red">Release the python package</font></b>')
     } // parameters
     stages {
+        stage('Pre Build') {
+            steps {
+                script {
+                    env.VERSION = sh(returnStdout: true, script: '''grep "version" galaxy.yml | cut -d ":" -f2 | cut -d " " -f2''').trim() 
+                } // script
+            } // steps
+        } // stage Pre Build
       	stage('Build project') {
             when {
        	        anyOf {
@@ -111,6 +118,16 @@ pipeline {
     } // stages
     post {
         always {
+            script {
+                // Set Build Name
+                wrap([$class: 'BuildUser']) {
+                    if (RELEASE_PACKAGE == "false") {
+                        currentBuild.displayName = "#${BUILD_NUMBER}_${VERSION}"
+                    } else if (RELEASE_PACKAGE == "true") {
+                        currentBuild.displayName = "#${BUILD_NUMBER}_${VERSION}_release"
+                    } // else if 
+                } // wrap
+            } // script
             script {
                 // Print environment variables
                 sh "env"
