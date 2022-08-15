@@ -89,7 +89,7 @@ pipeline {
                                 "files": [
                                     {
                                         "pattern": "${WORKSPACE}/*.tar.gz",
-                                        "target": "${artAnsibleRepo}/gil_test",
+                                        "target": "${artAnsibleRepo}/gil_test/",
                                         "props": "git.branch=${GIT_BRANCH}",
                                         "recursive": "false"
                                     }
@@ -118,16 +118,5 @@ pipeline {
             // Send email to 'DevelopersRecipientProvider'
             emailext body: '${DEFAULT_CONTENT}', recipientProviders: [[$class: 'DevelopersRecipientProvider']], subject: '$DEFAULT_SUBJECT', to: 'GilD@radware.com'
         } // always
-        success {
-            // Create git tag on master & dev branches
-            script {
-                if (c_BRANCH_NAME == "master" || c_BRANCH_NAME == "dev") {
-                    withCredentials([[$class: "UsernamePasswordMultiBinding", credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
-                        sh '''git tag -a "$BUILD_TAG" -m "Message of $BUILD_TAG"
-                        git push http://${gitUser}:${gitPass}@bitbucket:7990/scm/${projName}/${repoName} --tag'''
-                    } // withCredentials
-                } // if
-            } // script
-        } // success
     } // post
 } // pipeline
