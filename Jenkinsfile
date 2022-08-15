@@ -38,7 +38,9 @@ pipeline {
         // Credentials variables (dependent on Jenkins server where the pipeline is executed):'
       	// git credentials (cmjen06 generated)
         gitCreds = 'c61b51e5-10a5-41a3-b480-6c3946624c0d'
-
+        // Ansible-galaxy global server creds
+        ANSIBLE_CI= credentials('Ansible-galaxy_token')
+        
         // Artifactory variables
         artAnsibleRepo = "alteon-ansible-local"
         
@@ -118,6 +120,7 @@ pipeline {
                         } // withCredentials
                         if ("${VERSION}" == "${pkgVersion}"){
                             println "Upload to release package to galaxy official server"
+                            sh """docker run --user root --rm -v ${WORKSPACE}:/workspace -w /workspace ${ansibleImg} ansible-galaxy collection publish *.tar.gz --api-key='${ANSIBLE_CI}' """
                         } else {
                             error("Version: ${VERSION} doesn't exist on Artifactory")
                         } // else if
