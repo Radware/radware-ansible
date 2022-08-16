@@ -113,7 +113,7 @@ pipeline {
                         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
                             println "Validate RC package exists"
                             try {
-                                env.pkgVersion = sh(returnStdout: true, script: '''curl -XPOST -u "${gitUser}:${gitPass}" "${devart01}/api/search/aql" -H "Content-Type: text/plain" -d 'items.find({"$and" : [{"repo" : "'"${artAnsibleRepo}"'"}, {"@version" : "*"}]}).include("property.*")' | grep -o '"value" : "[^"]*' | grep -o "${VERSION}" ''').trim()
+                                env.pkgVersion = sh(returnStdout: true, script: '''curl -XPOST -u "${gitUser}:${gitPass}" "${devart01}/api/search/aql" -H "Content-Type: text/plain" -d 'items.find({"$and" : [{"repo" : "'"${artAnsibleRepo}"'"}, {"@version" : "*"}]}).include("property.*")' | grep -o '"value" : "[^"]*' | grep -ow "${VERSION}" ''').trim()
                             } catch (err) {
                                 env.pkgVersion = ""
                             } // try catch
