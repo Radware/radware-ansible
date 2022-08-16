@@ -121,9 +121,9 @@ pipeline {
                         if ("${VERSION}" == "${pkgVersion}"){
                             withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: "${gitCreds}", passwordVariable: "gitPass", usernameVariable: "gitUser"]]) {
                                 // Get the the path of the package on artifactory rest api
-                                env.artApiPath = sh(returnStdout: true, script: '''curl -X GET -u "${gitUser}:${gitPass}" "${devart01}/api/search/prop?version=${VERSION}&repos=${artAnsibleRepo}" | grep uri | awk '{print $3}' ''').trim()
+                                env.artApiPath = sh(returnStdout: true, script: '''curl -X GET -u "${gitUser}:${gitPass}" "${devart01}/api/search/prop?version=${VERSION}&repos=${artAnsibleRepo}" | grep uri | awk '{print $3}' | grep -oP '(?<=").*(?=")' ''').trim()
                                 // Get the the path of the package on artifactory for downloading
-                                env.packagePath = sh(returnStdout: true, script: '''curl -X GET -u "${gitUser}:${gitPass}" '${artApiPath}' | grep "downloadUri" | awk '{print $3}' ''').trim()
+                                env.packagePath = sh(returnStdout: true, script: '''curl -X GET -u "${gitUser}:${gitPass}" ${artApiPath} | grep "downloadUri" | awk '{print $3}' ''').trim()
                                 sh "wget '${packagePath}'"
                             } // withCredentials
                             println "Upload to release package to galaxy official server"
