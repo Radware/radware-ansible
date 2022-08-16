@@ -98,7 +98,7 @@ pipeline {
                                 "files": [
                                     {
                                         "pattern": "${WORKSPACE}/*.tar.gz",
-                                        "target": "${artAnsibleRepo}/gil_test/",
+                                        "target": "${artAnsibleRepo}/",
                                         "props": "git.branch=${GIT_BRANCH};version=${VERSION}",
                                         "recursive": "false"
                                     }
