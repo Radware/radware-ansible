@@ -22,7 +22,7 @@ def cmlib = library(
 )
 
 
-// Pipeline is starting here!!
+// Pipeline is starting here!
 pipeline {
     environment {
         // Git repository variables:
