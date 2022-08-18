@@ -227,6 +227,10 @@ options:
       - (!)snmpv3_access
       - l7_content_class
       - (!)l7_content_class
+      - l7_content_class_hostname
+      - (!)l7_content_class_hostname
+      - l7_content_class_path
+      - (!)l7_content_class_path
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
