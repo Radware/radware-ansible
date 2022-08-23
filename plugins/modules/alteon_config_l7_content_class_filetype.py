@@ -100,7 +100,7 @@ options:
         required: true
         default: null
         type: str
-      file_type_entry_id:
+      file_type_id:
         description:
           - file type entry index.
         required: true
