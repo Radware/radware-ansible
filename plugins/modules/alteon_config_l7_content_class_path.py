@@ -68,7 +68,7 @@ options:
       - When C(present), guarantees that the object exists with the provided attributes.
       - When C(absent), when applicable removes the object.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it. This state can be used only before applying the entry. If the entry was already applied you must delete, apply and recreate the entry.
+      - When C(overwrite), removes the object if exists then recreate it.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
@@ -92,7 +92,7 @@ options:
     type: bool
   parameters:
     description:
-      - Parameters for configuring URP paths to match in content class.
+      - Parameters for configuring URL paths to match in content class.
     suboptions:
       content_class_id:
         description:
@@ -123,23 +123,23 @@ options:
         - equal
         - include
         - regex
-      case sensitive:
+      case_sensitive:
         description:
           - Specifies whether to enable case-sensitivity for string matching.
         required: false
-        default: Disable
+        default: disable
         choices:
-        - Enable
-        - Disable
+        - enable
+        - disable
       data_class_id:
         description:
-          - Set data class for hostname matching.
+          - Set data class for URL path matching.
         required: false
         default: null
         type: str
       copy:
         description:
-          - Copy the current content class host name. Enter the host name ID to which the current host name has to be copied.
+          - Copy the current content class URL path. Enter the URL path ID to which the current URL path has to be copied.
         required: false
         default: null
         type: str
@@ -152,7 +152,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_l7_content_class_hostname:
+  radware.radware_modules.alteon_config_l7_content_class_path:
     provider: 
       server: 192.168.1.1
       user: admin

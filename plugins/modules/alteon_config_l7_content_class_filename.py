@@ -123,17 +123,17 @@ options:
         - equal
         - include
         - regex
-      case sensitive:
+      case_sensitive:
         description:
           - Specifies whether to enable case-sensitivity for string matching.
         required: false
-        default: Disable
+        default: disable
         choices:
-        - Enable
-        - Disable
+        - enable
+        - disable
       copy:
         description:
-          - Copy the current content class file name entry. Enter the file name ID to which the current host name has to be copied.
+          - Copy the current content class file name entry. Enter the file name ID to which the current host name entry has to be copied.
         required: false
         default: null
         type: str
