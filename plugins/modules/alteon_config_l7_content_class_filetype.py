@@ -127,10 +127,10 @@ options:
         description:
           - Specifies whether to enable case-sensitivity for string matching.
         required: false
-        default: disable
+        default: disabled
         choices:
-        - enable
-        - disable
+        - enabled
+        - disabled
       copy:
         description:
           - Copy the current content class file type entry. Enter the file type ID to which the current file type entry has to be copied.
@@ -158,7 +158,7 @@ EXAMPLES = r'''
     state: present
     parameters:
       content_class_id: 3
-      file_type_entry_id: filetype1
+      file_type_id: filetype1
       file_type_to_match: test_filetype
       match_type: equal
 '''

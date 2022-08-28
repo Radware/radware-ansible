@@ -127,10 +127,10 @@ options:
         description:
           - Specifies whether to enable case-sensitivity for string matching.
         required: false
-        default: disable
+        default: disabled
         choices:
-        - enable
-        - disable
+        - enabled
+        - disabled
       data_class_id:
         description:
           - Set data class for URL path matching.
