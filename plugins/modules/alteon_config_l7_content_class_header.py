@@ -12,10 +12,10 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
-module: alteon_config_l7_content_class_filename
-short_description: create and manage layer7 content class URL file names in Radware Alteon
+module: alteon_config_l7_content_class_header
+short_description: create and manage layer7 content class header in Radware Alteon
 description:
-  - create and manage URL filenames to match in a layer7 content class. 
+  - create and manage headers to match in a layer7 content class. 
 version_added: '2.9'
 author: 
   - Leon Meguira (@leonmeguira)
@@ -92,7 +92,7 @@ options:
     type: bool
   parameters:
     description:
-      - Parameters for configuring URL file names to match in layer7 content class.
+      - Parameters for configuring headers to match in layer7 content class.
     suboptions:
       content_class_id:
         description:
@@ -100,26 +100,39 @@ options:
         required: true
         default: null
         type: str
-      file_name_id:
+      header_id:
         description:
-          - file name entry index.
+          - header entry index.
         required: true
         default: null
         type: str
-      file_name_to_match:
+      header_name:
         description:
-          - The URL filename to match.
+          - The HTTP header name to match.
         required: false
         default: null
         type: str
-      match_type:
+      header_value:
         description:
-          - Set match type.
+          - The HTTP header value to match.
+        required: false
+        default: null
+        type: str
+      header_name_match_type:
+        description:
+          - Set match type for HTTP header name.
         required: false
         default: include
         choices:
-        - sufx
-        - prefx
+        - equal
+        - include
+        - regex
+      header_value_match_type:
+        description:
+          - Set match type for HTTP header value.
+        required: false
+        default: include
+        choices:
         - equal
         - include
         - regex
@@ -133,7 +146,7 @@ options:
         - disabled
       copy:
         description:
-          - Copy the current content class file name entry. Enter the file name ID to which the current file name entry has to be copied.
+          - Copy the current content class header entry. Enter the header ID to which the current header entry has to be copied.
         required: false
         default: null
         type: str
@@ -146,7 +159,7 @@ requirements:
 
 EXAMPLES = r'''
 - name: alteon configuration command
-  radware.radware_modules.alteon_config_l7_content_class_filename:
+  radware.radware_modules.alteon_config_l7_content_class_header:
     provider: 
       server: 192.168.1.1
       user: admin
@@ -158,9 +171,9 @@ EXAMPLES = r'''
     state: present
     parameters:
       content_class_id: 3
-      file_name_id: filename1
-      file_name_to_match: test_filename
-      match_type: equal
+      header_id: header1
+      header_name: test_header
+      header_name_match_type: equal
 '''
 
 RETURN = r'''
@@ -182,18 +195,18 @@ import logging
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
-from radware.alteon.sdk.configurators.l7_content_class_filename import L7ContentClassFileNameConfigurator
+from radware.alteon.sdk.configurators.l7_content_class_header import L7ContentClassHeaderConfigurator
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
-        super(ModuleManager, self).__init__(L7ContentClassFileNameConfigurator, **kwargs)
+        super(ModuleManager, self).__init__(L7ContentClassHeaderConfigurator, **kwargs)
 
 
 def main():
-    spec = ArgumentSpec(L7ContentClassFileNameConfigurator)
+    spec = ArgumentSpec(L7ContentClassHeaderConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
-    #logging.basicConfig(filename="logL7FileName.txt", filemode='a',
+    #logging.basicConfig(filename="logL7Header.txt", filemode='a',
     #      format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
     #      level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
     #log = logging.getLogger()
