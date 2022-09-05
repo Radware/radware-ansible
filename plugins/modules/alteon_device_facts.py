@@ -237,6 +237,8 @@ options:
       - (!)l7_content_class_filetype
       - l7_content_class_header
       - (!)l7_content_class_header
+      - l7_content_class_cookie
+      - (!)l7_content_class_cookie
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
