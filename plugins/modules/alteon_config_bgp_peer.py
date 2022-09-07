@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2020, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -15,9 +15,9 @@ DOCUMENTATION = r'''
 module: alteon_config_bgp_peer
 short_description: create and manage BGP peer in Radware Alteon
 description:
-  - create and manage BGP peer in Radware Alteon. 
+  - create and manage BGP peer in Radware Alteon.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -117,7 +117,8 @@ options:
         description:
           - Set the remote automonos system (AS) number of the BGP peer, using asdot notation.
           - Use either this or remote_as_number (as plain notation), but not both.
-          - This field is available from alteon versions 33.0.5.0 and 33.5.1.0.
+          - This field is available from alteon versions 32.6.10.0, 33.0.5.0 and 33.5.1.0.
+          - It is recommended to wrap the text in " ".
         required: false
         default: null
         type: str
@@ -349,7 +350,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_bgp_peer:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -362,7 +363,7 @@ EXAMPLES = r'''
       index: 3
       state: enabled
       remote_addr: 3.3.3.3
-      in_rmap_list: 
+      in_rmap_list:
       - 1
       - 2
 '''
@@ -386,6 +387,7 @@ from ansible_collections.radware.radware_modules.plugins.module_utils.common imp
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.bgp_peer import BgpPeerConfigurator
+
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
