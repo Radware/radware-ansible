@@ -106,19 +106,19 @@ options:
         required: true
         default: null
         type: str
-      Cookie_key:
+      cookie_key:
         description:
           - the cookie key to match.
         required: false
         default: null
         type: str
-      Cookie_value:
+      cookie_value:
         description:
           - the cookie value to match.
         required: false
         default: null
         type: str
-      Cookie_key_match_type:
+      cookie_key_match_type:
         description:
           - Set match type for the cookie key.
         required: false
@@ -127,7 +127,7 @@ options:
         - equal
         - include
         - regex
-      Cookie_value_match_type:
+      cookie_value_match_type:
         description:
           - Set match type for the cookie value.
         required: false
@@ -172,8 +172,8 @@ EXAMPLES = r'''
     parameters:
       content_class_id: 3
       cookie_id: cookie1
-      Cookie_key: test_cookie
-      Cookie_key_match_type: equal
+      cookie_key: test_cookie
+      cookie_key_match_type: equal
 '''
 
 RETURN = r'''
