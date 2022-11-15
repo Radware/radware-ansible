@@ -175,6 +175,7 @@ options:
       secure_web_application_processing:
         description:
           - set secured web application processing for this rule.
+          - This field is available from alteon version 33.5.3.0.
         required: false
         default: inherit
         choices:
@@ -183,6 +184,7 @@ options:
       secure_path_policy:
         description:
           - set secure path policy for this rule..
+          - This field is available from alteon version 33.5.3.0.
         required: false
         default: null
         type: str
