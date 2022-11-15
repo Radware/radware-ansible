@@ -158,6 +158,7 @@ options:
       bot_manager_processing:
         description:
           - set bot manager processing for this rule.
+          - This field is available from alteon versions 33.0.7.0 and 33.5.3.0.
         required: false
         default: inherit
         choices:
@@ -167,6 +168,7 @@ options:
       bot_manager_policy:
         description:
           - set bot manager policy for this rule..
+          - This field is available from alteon versions 33.0.7.0 and 33.5.3.0.
         required: false
         default: null
         type: str
@@ -187,6 +189,7 @@ options:
       sideband_processing:
         description:
           - set sideband processing for this rule.
+          - This field is available from alteon version 33.5.3.0.
         required: false
         default: inherit
         choices:
@@ -196,6 +199,7 @@ options:
       sideband_policy:
         description:
           - set sideband policy for this rule.
+          - This field is available from alteon version 33.5.3.0.
         required: false
         default: null
         type: str
