@@ -144,12 +144,6 @@ options:
         choices:
         - enabled
         - disabled
-      copy:
-        description:
-          - Copy the current cookie entry. Enter the cookie ID to which the current cookie entry has to be copied.
-        required: false
-        default: null
-        type: str
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)

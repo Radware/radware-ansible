@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2022, Radware LTD. 
+# Copyright: (c) 2022, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -15,9 +15,9 @@ DOCUMENTATION = r'''
 module: alteon_config_l7_content_class_header
 short_description: create and manage layer7 content class header in Radware Alteon
 description:
-  - create and manage headers to match in a layer7 content class. 
+  - create and manage headers to match in a layer7 content class.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -144,12 +144,6 @@ options:
         choices:
         - enabled
         - disabled
-      copy:
-        description:
-          - Copy the current content class header entry. Enter the header ID to which the current header entry has to be copied.
-        required: false
-        default: null
-        type: str
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
@@ -160,7 +154,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_l7_content_class_header:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -197,6 +191,7 @@ from ansible_collections.radware.radware_modules.plugins.module_utils.alteon imp
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.l7_content_class_header import L7ContentClassHeaderConfigurator
 
+
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
         super(ModuleManager, self).__init__(L7ContentClassHeaderConfigurator, **kwargs)
@@ -206,10 +201,10 @@ def main():
     spec = ArgumentSpec(L7ContentClassHeaderConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
-    #logging.basicConfig(filename="logL7Header.txt", filemode='a',
+    # logging.basicConfig(filename="logL7Header.txt", filemode='a',
     #      format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
     #      level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
-    #log = logging.getLogger()
+    # log = logging.getLogger()
 
     try:
         mm = ModuleManager(module=module)
