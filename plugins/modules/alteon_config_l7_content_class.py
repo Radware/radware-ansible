@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2022, Radware LTD. 
+# Copyright: (c) 2022, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -15,9 +15,9 @@ DOCUMENTATION = r'''
 module: alteon_config_l7_content_class
 short_description: create and manage layer7 content class in Radware Alteon
 description:
-  - create and manage layer7 content class in Radware Alteon. 
+  - create and manage layer7 content class in Radware Alteon.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -68,7 +68,8 @@ options:
       - When C(present), guarantees that the object exists with the provided attributes.
       - When C(absent), when applicable removes the object.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it. This state can be used only before applying the entry. If the entry was already applied you must delete, apply and recreate the entry.
+      - When C(overwrite), removes the object if exists then recreate it. This state can be used only before applying the entry.
+        If the entry was already applied you must delete, apply and recreate the entry.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
@@ -118,13 +119,6 @@ options:
       logical_expression:
         description:
           - Set logical expression between classes.
-        required: false
-        default: null
-        type: str
-      copy:
-        description:
-          - Copy the current content class. Enter the content Class ID to which the current content Class has to be copied.
-          - Copy of an entry can not be done when setting new entry.
         required: false
         default: null
         type: str
@@ -202,7 +196,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_l7_content_class:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -238,6 +232,7 @@ from ansible_collections.radware.radware_modules.plugins.module_utils.alteon imp
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.l7_content_class import L7ContentClassConfigurator
 
+
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
         super(ModuleManager, self).__init__(L7ContentClassConfigurator, **kwargs)
@@ -247,10 +242,10 @@ def main():
     spec = ArgumentSpec(L7ContentClassConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
-    #logging.basicConfig(filename="logL7cntclss7.txt", filemode='a',
+    # logging.basicConfig(filename="logL7cntclss7.txt", filemode='a',
     #      format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
     #      level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
-    #log = logging.getLogger()
+    # log = logging.getLogger()
 
     try:
         mm = ModuleManager(module=module)
