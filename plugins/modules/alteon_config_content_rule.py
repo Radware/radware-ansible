@@ -149,7 +149,7 @@ options:
         type: str
       state:
         description:
-          - Set match type for the cookie value.
+          - Enable or disable Content Based Services Rule.
         required: false
         default: disabled
         choices:
