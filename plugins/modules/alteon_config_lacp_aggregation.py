@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2022, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -18,7 +18,7 @@ description:
   - Manage lacp aggregation in Radware Alteon.
   - This feature is available only in Alteon standalone, VA, and ADC-VX mode.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -69,7 +69,7 @@ options:
       - When C(present), guarantees that the object exists with the provided attributes.
       - When C(absent), when applicable removes the object.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it
+      - When C(overwrite), removes the object if exists then recreate it.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
@@ -112,16 +112,15 @@ options:
         - long
       block_port_outside_of_aggr:
         description:
-          - Specifies what to do with traffic on a port (whether to block or to forward) that is not in a Link Aggregation Group.
+          - Specifies what to do with traffic on a port (whether to block or to forward) that is not in a Link Aggregation Group..
         required: false
-        default: null
         default: null
         choices:
         - enabled
         - disabled
       system_priority:
         description:
-          - A read-write value indicating the priority value associated with the Actor's System ID.
+          -  A read-write value indicating the priority value associated with the Actor's System ID.
         required: false
         default: null
         type: int
@@ -168,7 +167,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_lacp_aggregation:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -184,14 +183,14 @@ EXAMPLES = r'''
       groups:
         - id: 50
           state: active
-          ports:
+          ports::
             - 2
             - 3
         - id: 100
           state: passive
-          ports:
+          ports::
             - 8
-            - 9      
+            - 9
 '''
 
 RETURN = r'''
@@ -208,11 +207,13 @@ obj:
 
 from ansible.module_utils.basic import AnsibleModule
 import traceback
+import logging
 
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
     AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.lacp_aggregation import LACPAggregationConfigurator
+
 
 class ModuleManager(AlteonConfigurationModule):
     def __init__(self, **kwargs):
@@ -222,6 +223,11 @@ class ModuleManager(AlteonConfigurationModule):
 def main():
     spec = ArgumentSpec(LACPAggregationConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
+
+    # logging.basicConfig(filename="lacpAggr.txt", filemode='a',
+    #     format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
+    #     level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
+    # log = logging.getLogger()
 
     try:
         mm = ModuleManager(module=module)
@@ -233,4 +239,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

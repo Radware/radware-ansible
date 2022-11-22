@@ -13,12 +13,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = r'''
 module: alteon_software_install_vadc
-short_description: Install software image on vadc 
+short_description: Install software image on vadc
 description:
   - Install software image on Alteon device
-  - applicable on VX 
+  - applicable on VX
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
 options:
   provider:
@@ -65,7 +65,7 @@ options:
         default: null
   state:
     description:
-      - When C(installed), ensure the vadc software installed on the device and the is set to be booted  
+      - When C(installed), ensure the vadc software installed on the device and the is set to be booted
         from. the vadcs are not rebooted into the new software if needed.
       - When C(activated), performs the same operation as C(installed), but the vadcs are rebooted into the new software
     required: false
@@ -101,18 +101,17 @@ options:
   vadc_user:
     description:
       - vadc login user name for software installation validation
-      - if unspecified, vx login user is used 
+      - if unspecified, vx login user is used
     required: false
     default: null
     type: str
   vadc_password:
     description:
       - vadc login password for software installation validation
-      - if unspecified, vx login password is used 
+      - if unspecified, vx login password is used
     required: false
     default: null
     type: str
-    type: bool
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
@@ -123,7 +122,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon software installation
   radware.radware_modules.alteon_software_install:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -152,7 +151,6 @@ import traceback
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonManagementModule, AlteonManagementFunctionArgumentSpec
 from radware.alteon.sdk.alteon_managment import AlteonMngOper
-
 
 
 class ArgumentSpecs(AlteonManagementFunctionArgumentSpec):
