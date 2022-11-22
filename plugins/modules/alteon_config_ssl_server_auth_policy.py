@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2020, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -15,10 +15,13 @@ DOCUMENTATION = r'''
 module: alteon_config_ssl_server_auth_policy
 short_description: Manage SSL server Authentication Policy in Radware Alteon
 description:
-  - SSL client authentication enables a server to confirm a client's identity as part of the SSL handshake process. Similarly, SSL server authentication enables a client to confirm the identity of the server. Authentication of a client or server requires checking their certificate validity. If the certificate is valid, the handshake process is completed, otherwise the session is terminated.
+  - SSL client authentication enables a server to confirm a client's identity as part of the SSL handshake process.
+  - Similarly, SSL server authentication enables a client to confirm the identity of the server.
+  - Authentication of a client or server requires checking their certificate validity.
+  - If the certificate is valid, the handshake process is completed, otherwise the session is terminated.
   - The same Authentication Policy can be associated with multiple SSL Policies.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -91,7 +94,6 @@ options:
     required: false
     default: false
     type: bool
-
   parameters:
     description:
       - Parameters for SSL server Authentication Policy configuration.
@@ -118,54 +120,11 @@ options:
         - disabled
       ca_chain_lookup_depth:
         description:
-          - Specifies the maximum number of certificates to be traversed in a certificate chain while attempting to validate the link between the certificate and the configured trusted CA.
+          - Specifies the maximum number of certificates to be traversed in a certificate chain while attempting to validate the link between
+          - the certificate and the configured trusted CA.
         required: false
         default: 2
         type: int
-      cert_validation_method:
-        description:
-          - Specifies whether to verify that a client certificate is trusted.
-        required: false
-        default: null
-        choices:
-        - enabled
-        - disabled
-      failure_redirection_url:
-        description:
-          - Specifies the URL to which a client should be redirected when its authentication fails.
-        required: false
-        default: null
-        type: str
-      trusted_ca_chain_name:
-        description:
-          - Trusted CA certificate name.
-        required: false
-        default: null
-        type: str
-      trusted_ca_chain_type:
-        description:
-          - Specifies one or more (group) Certificate Authority (CA) certificates that are trusted as issuers of regular (client/server) certificates.
-        required: false
-        default: null
-        choices:
-        - group
-        - cert
-      advertised_ca_chain_name:
-        description:
-          - Specifies the certificate authority name that should be included in the Certificate Request message, providing greater control over the configuration information shared with unknown clients.
-        required: false
-        default: null
-        type: str
-      advertised_ca_chain_type:
-        description:
-          - Advertised CA type
-        required: false
-        default: null
-        choices:
-        - group
-        - cert
-        - default
-        - none
       cert_validation_method:
         description:
           - Specifies the method for validating whether a certificate, that was already validated as issued by a trusted entity, has not been revoked.
@@ -182,7 +141,8 @@ options:
         type: str
       ocsp_uri_priority:
         description:
-          - The OCSP access point can be configured (static URI) or can be provided in the certificate (in the Authority Information Access extension). The OCSP URI priority defines whether to check first if the location is provided in the certificate or not.
+          - The OCSP access point can be configured (static URI) or can be provided in the certificate (in the Authority Information Access extension).
+          - The OCSP URI priority defines whether to check first if the location is provided in the certificate or not.
         required: false
         default: clientcert
         choices:
@@ -202,7 +162,8 @@ options:
         type: int
       ocsp_cert_chain_validation:
         description:
-          - Specifies whether to enable validation of every certificate in the certificate chain, or only of the authenticated element (client/server) certificate.
+          - Specifies whether to enable validation of every certificate in the certificate chain, or only of the authenticated element
+          - (client/server) certificate.
         required: false
         default: disabled
         choices:
@@ -210,7 +171,8 @@ options:
         - disabled
       ocsp_response_secure:
         description:
-          - Specifies whether to verify that the certificate status information received from the OCSP responder is up-to-date by sending a random nonce (a random sequence of 20 bytes) in the OCSP request. The OCSP responder must use its secret key to sign the response containing this nonce.
+          - Specifies whether to verify that the certificate status information received from the OCSP responder is up-to-date by sending a random nonce
+          - (a random sequence of 20 bytes) in the OCSP request. The OCSP responder must use its secret key to sign the response containing this nonce.
         required: false
         default: enabled
         choices:
@@ -264,7 +226,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_ssl_server_auth_policy:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin

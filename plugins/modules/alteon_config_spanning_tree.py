@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2022, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -15,9 +15,9 @@ DOCUMENTATION = r'''
 module: alteon_config_spanning_tree
 short_description: Manage spanning tree in Radware Alteon
 description:
-  - Manage spanning tree in Radware Alteon
+  - Manage spanning tree in Radware Alteon.
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
   - Nati Fridman (@natifridman)
 options:
@@ -68,7 +68,7 @@ options:
       - When C(present), guarantees that the object exists with the provided attributes.
       - When C(absent), when applicable removes the object.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it
+      - When C(overwrite), removes the object if exists then recreate it.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
@@ -94,17 +94,9 @@ options:
     description:
       - Parameters for spanning tree configuration.
     suboptions:
-      state:
-        description:
-          - Spanning tree state.
-        required: true
-        default: null
-        choices:
-        - on
-        - off
       mstp:
         description:
-          - Enable/Disable Multiple Spanning Tree
+          - Enable/Disable Multiple Spanning Tree.
         required: false
         default: null
         choices:
@@ -154,6 +146,14 @@ options:
         required: false
         default: null
         type: int
+      state:
+        description:
+          - Spanning tree state.
+        required: ture
+        default: disabled
+        choices:
+        - on
+        - off
       stp_groups:
         description:
           - Spanning tree group parameters.
@@ -214,12 +214,12 @@ options:
             default: null
             choices:
             - enabled
-            - disabled
-          pvst_frames_on_untagged_ports:
+            - off
+          vlans:
             description:
               - Specifies the VLANs in the spanning tree group.
             required: false
-            default: null
+            default: 15
             type: list
             elements: int
 notes:
@@ -232,7 +232,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.alteon_config_spanning_tree:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -271,6 +271,7 @@ obj:
 
 from ansible.module_utils.basic import AnsibleModule
 import traceback
+import logging
 
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
@@ -287,6 +288,11 @@ def main():
     spec = ArgumentSpec(SpanningTreeConfigurator)
     module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
+    # logging.basicConfig(filename="SpanningTree.txt", filemode='a',
+    #     format='[%(levelname)s %(asctime)s %(filename)s:%(lineno)s %(funcName)s]\n%(message)s',
+    #     level=logging.DEBUG, datefmt='%d-%b-%Y %H:%M:%S')
+    # log = logging.getLogger()
+
     try:
         mm = ModuleManager(module=module)
         result = mm.exec_module()
@@ -297,4 +303,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

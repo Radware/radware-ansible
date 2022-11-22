@@ -1,15 +1,15 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Copyright: (c) 2020, Radware LTD. 
+# Copyright: (c) 2020, Radware LTD.
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-          'status': ['stableinterface'],
-          'supported_by': 'certified'}
+                    'status': ['stableinterface'],
+                    'supported_by': 'certified'}
 
 DOCUMENTATION = r'''
 module: alteon_config_ssl_cert_group
@@ -17,7 +17,7 @@ short_description: Manage SSL certificate groups in Radware Alteon
 description:
   - Manage SSL certificate groups in Radware Alteon
 version_added: '2.9'
-author: 
+author:
   - Leon Meguira (@leonmeguira)
 options:
   provider:
@@ -108,6 +108,7 @@ options:
         - serverCertificate
         - trustedCertificate
         - intermediateCertificate
+      description:
         description:
           -  Certificate group description.
         required: false
@@ -144,7 +145,7 @@ requirements:
 EXAMPLES = r'''
 - name: alteon configuration command
   radware.radware_modules.  alteon_config_ssl_cert_group:
-    provider: 
+    provider:
       server: 192.168.1.1
       user: admin
       password: admin
@@ -180,26 +181,26 @@ import traceback
 
 from ansible_collections.radware.radware_modules.plugins.module_utils.common import RadwareModuleError
 from ansible_collections.radware.radware_modules.plugins.module_utils.alteon import AlteonConfigurationModule, \
-  AlteonConfigurationArgumentSpec as ArgumentSpec
+    AlteonConfigurationArgumentSpec as ArgumentSpec
 from radware.alteon.sdk.configurators.ssl_cert_group import SSLCertGroupConfigurator
 
 
 class ModuleManager(AlteonConfigurationModule):
-  def __init__(self, **kwargs):
-    super(ModuleManager, self).__init__(SSLCertGroupConfigurator, **kwargs)
+    def __init__(self, **kwargs):
+        super(ModuleManager, self).__init__(SSLCertGroupConfigurator, **kwargs)
 
 
 def main():
-  spec = ArgumentSpec(SSLCertGroupConfigurator)
-  module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
+    spec = ArgumentSpec(SSLCertGroupConfigurator)
+    module = AnsibleModule(argument_spec=spec.argument_spec, supports_check_mode=spec.supports_check_mode)
 
-  try:
-    mm = ModuleManager(module=module)
-    result = mm.exec_module()
-    module.exit_json(**result)
-  except RadwareModuleError as e:
-    module.fail_json(msg=str(e), exception=traceback.format_exc())
+    try:
+        mm = ModuleManager(module=module)
+        result = mm.exec_module()
+        module.exit_json(**result)
+    except RadwareModuleError as e:
+        module.fail_json(msg=str(e), exception=traceback.format_exc())
 
 
 if __name__ == '__main__':
-  main()
+    main()
