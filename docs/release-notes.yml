@@ -1,66 +1,82 @@
 RELEASE NOTES
 
 Ansible versions: 
+•	Radware Modules: 0.5.5
+•	Alteon SDK 0.11b2	
+Tested with Alteon versions: 32.4.13.0, 32.6.11.0, 33.0.7.0, and 33.5.3.0.
+New modules: 
+•	Content rule configuration 
+
+Changes: 
+Removed the copy option from L7 content class tables. 
+
+
+Ansible versions: 
 •	Radware Modules: 0.4.12
 •	Alteon SDK 0.10b8	
-Was tested with Alteon versions: 32.4.12.0, 32.6.10.0, 33.0.6.0, and 33.5.2.0.
-changes:
-Partial support for layer7 content class tables.
+Tested with Alteon versions: 32.4.12.0, 32.6.10.0, 33.0.6.0, and 33.5.2.0.
+New modules: 
+•	Content L7 content class configuration 
+•	Content L7 content class path configuration 
+•	Content L7 content class hostname configuration 
+•	Content L7 content class header configuration 
+•	Content L7 content class filetype configuration 
+•	Content L7 content class filename configuration 
+•	Content L7 content class cookie configuration 
+
 
 Ansible versions: 
 •	Radware Modules: 0.3.4
 •	Alteon SDK 0.9b3	
-Was tested with Alteon versions: 32.4.11.0, 32.6.9.0, 33.0.5.0, and 33.5.1.0.
-Bug Fixes
+Tested with Alteon versions: 32.4.11.0, 32.6.9.0, 33.0.5.0, and 33.5.1.0.
+Bug Fixes:
 •	DE70476 - Ansible facts gathering fails when there is a non-generated certificate.
 •	DE73620 - Fixed documentation in alteon-device-facts.
-changes:
+Changes:
 Support for BGP ASdot notation.
 
 Ansible versions:  
-	Radware Modules: 0.2.6 
-	Alteon SDK 0.8b6 
-
+•	Radware Modules: 0.2.6 
+•	Alteon SDK 0.8b6 
 Tested with Alteon versions: 32.4.10.0, 32.6.8.0, 33.0.4.0, and 33.5.0.0. 
 
 New modules: 
-DNS GEL configuration 
-SLB port configuration 
-SNMPV3 access table 
+•	DNS GEL configuration 
+•	SLB port configuration 
+•	SNMPV3 access table 
 
 Bug Fixes:
-DE72820 - fix the description of�vip_health_check_mode in the module alteon_config_server_group.
+DE72820 - Fixed the description of vip_health_check_mode in the module, alteon_config_server_group.
 
 Ansible versions:  
-	Radware Modules: 0.1.13 
-	Alteon SDK: 0.7b19 
-
+•	Radware Modules: 0.1.13 
+•	Alteon SDK: 0.7b19 
 Tested with Alteon versions: 32.4.9.0, 32.6.7.0, and 33.0.3.0. 
 
 New modules: 
-snmpv3 usm user table 
-snmpv3 Security To Group Table 
-snmpv3 target address table 
-snmpv3 community table 
-snmvp3 view tree family 
-snmpv3 notify table 
-snmpv3 general parameters 
+•	snmpv3 usm user table 
+•	snmpv3 Security To Group Table 
+•	snmpv3 target address table 
+•	snmpv3 community table 
+•	snmvp3 view tree family 
+•	snmpv3 notify table 
+•	snmpv3 general parameters 
 
 Changes: 
-Support for new ECMP mode parameter for BGP global configuration module. 
+Support for the new ECMP mode parameter for the BGP global configuration module. 
 
 Bug Fixes: 
-DE68259 - Ansible facts gathering fails due to the removal of APM feature support. 
-DE69528 - Ansible facts gathering fails due to the BGP global and sys alerts modules. 
-DE69867 - Ansible facts gathered from standalone devices do not provide the correct image list. 
+•	DE68259 - Ansible facts gathering fails due to the removal of the APM feature support. 
+•	DE69528 - Ansible facts gathering fails due to the BGP global and sys alerts modules. 
+•	DE69867 - Ansible facts gathered from standalone devices do not provide the correct image list. 
 
 Notes:
-1. In Ansible log, if there are words that include the complete user password string, the text is displayed as ******* (for example, if the password is "are" and in the log you have the word Radware, it appears as Radw******). This is a general Ansible limitation and thus it is recommended to use complex passwords. 
+1. In the Ansible log, if there are words that include the complete user password string, the text is displayed as ******* (for example, if the password is "are" and in the log you have the word "Radware", it appears as Radw******). This is a general Ansible limitation so Radware recommends using complex passwords. 
 2. Alteon key fields accept only letters, numbers, underscore “_”, hyphen “-“ and dot “.”. In addition use of “#” in a key would cause Ansible to remove the text after this character from the REST API URL sent to Alteon (according to RFC 398) which will create on Alteon an entry with a different key.
 
 Known Limitations: 
 1. When you set a password, Ansible reports that a change was not performed (changed=0) even when the action was executed successfully.
-2. When running the Ansible module, "alteon_device_facts", MP CPU might reach 100%. This may cause performance issues such as slow web UI and SSH operations, and unstable connectivity to the MNG port default gateways and GSLB remote sites.
+2. When running the Ansible module, alteon_device_facts Ansible module, MP CPU might reach 100%. This may cause performance issues such as slow web UI and SSH operations, and unstable connectivity to the MNG port default gateways and GSLB remote sites.
  
 
 
