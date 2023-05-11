@@ -225,6 +225,7 @@ options:
         choices:
         - group
         - cert
+        - none        
       fe_auth_policy_name:
         description:
           - Specifies how client certificate authenticity should be checked, if at all.
