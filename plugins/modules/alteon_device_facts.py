@@ -241,6 +241,8 @@ options:
       - (!)l7_content_class_cookie
       - content_rule
       - (!)content_rule
+      - secure_path_policy
+      - (!)secure_path_policy
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
