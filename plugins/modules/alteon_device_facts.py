@@ -243,6 +243,8 @@ options:
       - (!)content_rule
       - secure_path_policy
       - (!)secure_path_policy
+      - sideband_policy
+      - (!)sideband_policy
 notes:
   - Requires Radware alteon Python SDK.
 requirements:
