@@ -144,7 +144,7 @@ options:
       methods_to_bypass:
         description:
           - List the HTTP method to bypass static files with pipe separation. Spaces are not allowed.
-          - Default value: GET|HEAD.
+          - Default Value:GET|HEAD.
         required: false
         default: null
         type: str
@@ -159,7 +159,7 @@ options:
       maximum_request_size:
         description:
           - Enter the maximum request size (in kb).
-          - Valid range: 1-1024. Default 10.
+          - Valid range:1-1024. Default 10.
         required: false
         default: null
         type: int
