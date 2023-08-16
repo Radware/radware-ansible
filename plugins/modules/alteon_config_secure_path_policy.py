@@ -67,8 +67,7 @@ options:
       - When C(present), guarantees that the object exists with the provided attributes.
       - When C(absent), when applicable removes the object.
       - When C(read), when exists read object from configuration to parameter format.
-      - When C(overwrite), removes the object if exists then recreate it. This state can be used only before applying the entry.
-        If the entry was already applied you must delete, apply and recreate the entry.
+      - When C(overwrite), removes the object if exists then recreate it.
       - When C(append), append object configuration with the provided parameters
     required: true
     default: null
