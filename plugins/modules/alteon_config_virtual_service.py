@@ -483,20 +483,22 @@ options:
       sideband_policy_id:
         description:
           - Set sideband policy for this virtual service.
+          - This field is available from alteon version 33.0.1.0.
         required: false
         default: null
         type: str
       secure_path_policy:
         description:
           - Set secure path policy for this virtual service.
+          - This field is available from alteon version 33.5.2.0.
         required: false
         default: null
         type: str
       cdn_proxy_mode:
         description:
-          - Enable/Disable service in CDB/proxy deployment mode.
+          - Enable/Disable service in CDN/proxy deployment mode.
         required: false
-        default: null
+        default: disabled
         choices:
         - enabled
         - disabled
@@ -505,13 +507,15 @@ options:
           - Set the HTTP header indicating the IP address of the client.
           - valid options:x-forwarded-for, remote_addr, http_client_ip, http_x_forwarded_for, x-real-ip, http_x_forwarded, proxy-client-ip,
           - wl-proxy-client-ip, http_x_cluster_client_ip, http_forwarded_for, http_forwarded, http_via, x-true-client-ip, user-defined.
+          - This field is available from alteon version 33.0.1.0.
         required: false
-        default: null
+        default: x-forwarded-for
         type: str
       user_defined_ip_header:
         description:
           - Set the user defined HTTP header indicating the IP address of the client.
           - This field can be set only if ip_header is set to uder_defined.
+          - This field is available from alteon version 33.0.1.0.
         required: false
         default: null
         type: str
