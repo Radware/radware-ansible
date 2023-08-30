@@ -91,11 +91,12 @@ options:
     type: bool
   parameters:
     description:
-      - BGP global parameters configuration.
+      - Security global parameters configuration.
     suboptions:
       secure_path_status:
         description:
           - enable or disable secure path.
+          - This field is available from alteon version 33.5.2.0.
         required: false
         default: "off"
         choices:
@@ -121,7 +122,7 @@ EXAMPLES = r'''
       timeout: 5
     state: present
     parameters:
-      SecurePathStatus: on
+      secure_path_status: on
 '''
 
 RETURN = r'''
