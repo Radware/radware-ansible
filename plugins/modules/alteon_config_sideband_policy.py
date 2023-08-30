@@ -194,6 +194,23 @@ options:
         choices:
         - enabled
         - disabled
+      appshapes:
+        description:
+          - Associate Appshape scripts to sideband policy.
+        required: false
+        default: null
+        elements: dict
+        suboptions:
+          priority:
+            description:
+              - Appshape script priority.
+            required: true
+            type: int
+          name:
+            description:
+              - Appshape script name.
+            required: false
+            type: str
 notes:
   - Requires the Radware alteon-sdk Python package on the host. This is as easy as
       C(pip3 install alteon-sdk)
@@ -218,6 +235,9 @@ EXAMPLES = r'''
       name: sideband3
       sideband_policy_state: enabled
       group_id: group1
+    appshapes:
+      - priority: 3
+        name: SecurePath_sideband_script
 '''
 
 RETURN = r'''
