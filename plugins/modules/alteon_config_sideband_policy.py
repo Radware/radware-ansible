@@ -235,9 +235,9 @@ EXAMPLES = r'''
       name: sideband3
       sideband_policy_state: enabled
       group_id: group1
-    appshapes:
-      - priority: 3
-        name: SecurePath_sideband_script
+      appshapes:
+        - priority: 3
+          name: SecurePath_sideband_script
 '''
 
 RETURN = r'''
