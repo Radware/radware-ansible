@@ -3,17 +3,17 @@ RELEASE NOTES
 Ansible versions: 
 •	Radware Modules: 0.6.12
 •	Alteon SDK 0.12b8	
-Tested with Alteon versions: 32.4.16.0, 32.6.14.0, 33.0.10.0, and 33.5.6.0, 34.0.2.0.
+Tested with Alteon versions: 32.4.16.0, 32.6.14.0, 33.0.10.0, 33.5.6.0 and 34.0.2.0.
 New modules: 
-•	Secure path policy
+•	Secure Path policy
 •	Sideband policy
-•	Module for gloabl security paramters
+•	Module for Gloabl Security paramters
 
 Changes: 
-Add secure path support for virtual service module. 
+Added Secure Path support for Virtual Service Module. 
 
 Bug Fixes:
-•	SC15825 - fe_intermediate_ca_chain_type in ths ssl policy configuration does not accept the none value.
+•	SC15825 - fe_intermediate_ca_chain_type in ths SSL policy configuration does not accept the value none.
 
 
 Ansible versions: 
